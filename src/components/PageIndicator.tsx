@@ -46,7 +46,7 @@ export default ({page}:{page:number}) => {
     },[timer])
     if (page==1){
         return (
-            <div className="bg-alpha-xxx-light rounded-full w-20 h-3">
+            <div className="opacity-5 rounded-full w-20 h-3">
                 <div className={`${checkTimeOver()}`}>
                     <div style={{width:checkWidth(width,page)}} className={`bg-warning rounded-full h-3 ease-linear duration-1000`}></div>
                 </div>
@@ -56,7 +56,7 @@ export default ({page}:{page:number}) => {
     }else{
         return (
             
-            <div className="bg-alpha-xxx-light rounded-full w-20 h-3">
+            <div className="opacity-5 rounded-full w-20 h-3">
                 <div className={`${checkTimeOver()}`}>
                     <div style={{width:checkWidth(width,page)}} className="bg-warning rounded-full h-3 ease-linear duration-1000"></div>
                 </div>
