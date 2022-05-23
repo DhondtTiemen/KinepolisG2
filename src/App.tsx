@@ -1,6 +1,7 @@
 import { QRCodeSVG } from 'qrcode.react'
 import MovieCard from './components/MovieCard'
 import PageIndicator from './components/PageIndicator'
+import ToolTip from './components/ToolTip'
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
       <div className='flex gap-4 justify-center'>
         <PageIndicator page={1}/>
         <PageIndicator page={2}/>
+      </div>
+      <div>
+        <ToolTip/>
       </div>
     </div>
   )
