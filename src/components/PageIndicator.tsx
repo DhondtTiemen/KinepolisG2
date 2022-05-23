@@ -49,9 +49,7 @@ export default ({page}:{page:number}) => {
             <div className="bg-alpha-xxx-light rounded-full w-20 h-3">
                 <div className={`${checkTimeOver()}`}>
                     <div style={{width:checkWidth(width,page)}} className={`bg-warning rounded-full h-3 ease-linear duration-1000`}></div>
-
                 </div>
-                <div>Countdown: {timer}---{width}---{width-80}-----{checkTimeOver()}</div>
             </div>
         )
 

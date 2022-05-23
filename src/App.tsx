@@ -13,7 +13,7 @@ function App() {
         <MovieCard />
         <MovieCard />
       </div>
-      <div className='flex gap-4'>
+      <div className='flex gap-4 justify-center'>
         <PageIndicator page={1}/>
         <PageIndicator page={2}/>
       </div>
