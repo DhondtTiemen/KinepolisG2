@@ -12,8 +12,9 @@
 
 1. Rechtermuisknop op de feature die je gemaakt hebt
 2. Klik op finish feature
-3. Pull!
-4. Push!
+3. Zorg ervoor dat enkel het vinkje bij "Delete branch" aangeduid staat
+4. Pull! (om merge-conflicten te vermijden)
+5. Push!
 
 ## Naming Conventions
 
