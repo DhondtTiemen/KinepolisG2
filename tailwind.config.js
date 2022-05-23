@@ -18,6 +18,7 @@ module.exports = {
       alpha: '#1B243F',
       'alpha-x-light': '#004680',
       'alpha-xx-light': '#00AAD7',
+      'alpha-xxx-light':'#2A3B54',
 
       error: '#FF4F2E',
       warning: '#FAB233',
