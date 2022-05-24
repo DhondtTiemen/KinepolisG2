@@ -1,11 +1,11 @@
 export default () => {
   return (
-    <div className="w-2/4 text-gray">
-      <p className="text-warning font-proxima font-bold text-3xl">
+    <div className="w-2/4 text-gray font-proxima">
+      <p className="text-warning  font-bold text-3xl">
         14:00
       </p>
       <p className="text-base">zaal 13</p>
-      <div className="flex space-x-2 mt-2">
+      <div className="flex space-x-2 mt-1">
         <div className="w-3">
           <svg
             className="fill-gray"
