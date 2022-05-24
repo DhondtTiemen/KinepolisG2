@@ -1,8 +1,5 @@
 module.exports = {
-  content: [
-    './index.html',
-    './src/**/*.{vue,js,ts,jsx,tsx}',
-  ],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
       proxima: ['Proxima Nova'],
@@ -17,12 +14,15 @@ module.exports = {
       'gray-xx-light':'#e5e9ea',
 
       alpha: '#1B243F',
+      'alpha-x': '#2A3B54',
       'alpha-x-light': '#004680',
       'alpha-xx-light': '#00AAD7',
 
       error: '#FF4F2E',
       warning: '#FAB233',
       good: '#38E05E',
+
+      transparant: 'rgba(0,0,0,0)',
     },
     extend: {},
   },

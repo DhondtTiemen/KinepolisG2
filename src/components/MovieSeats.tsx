@@ -1,7 +1,7 @@
 export default () => {
   return (
-    <div className="flex items-center">
-      <p className="text-2xl mb-1 text-good">
+    <div className="flex items-center font-proxima">
+      <p className="text-2xl mb-1 font-bold text-good">
         {35}
       </p>
       <div className="w-6 ml-2">
