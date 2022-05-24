@@ -7,7 +7,7 @@ import MovieTimeInfo from './MovieTimeInfo'
 
 export default () => {
   return (
-    <div className="bg-alpha w-96 h-48 rounded-2xl overflow-hidden">
+    <div className="bg-alpha-x w-96 h-48 rounded-2xl overflow-hidden">
       <div className="flex h-[62%]">
         <div className="w-[35%]">
           <MovieCover />
