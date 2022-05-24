@@ -10,7 +10,7 @@ function App() {
       <div>
         <ToolTip />
       </div>
-      <div className="flex justify-between mx-6 mt-4">
+      <div className="flex gap-4 flex-wrap justify-center mx-6 mt-4">
         <MovieCard />
         <MovieCard />
       </div>
