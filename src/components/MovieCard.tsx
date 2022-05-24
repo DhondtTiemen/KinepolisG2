@@ -1,9 +1,9 @@
 import { QRCodeSVG } from 'qrcode.react'
-import MovieCover from './MovieCover'
-import MovieInfo from './MovieInfo'
-import MovieSeats from './MovieSeats'
-import MovieTechnology from './MovieTechnology'
-import MovieTimeInfo from './MovieTimeInfo'
+import MovieCover from './cardComponents/MovieCover'
+import MovieInfo from './cardComponents/MovieInfo'
+import MovieSeats from './cardComponents/MovieSeats'
+import MovieTechnology from './cardComponents/MovieTechnology'
+import MovieTimeInfo from './cardComponents/MovieTimeInfo'
 
 export default () => {
   return (
