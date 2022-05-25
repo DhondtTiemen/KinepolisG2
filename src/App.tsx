@@ -8,12 +8,11 @@ import TrailerCard from './components/TrailerCard'
 function App() {
   return (
     <div className="h-screen bg-gray-x-light dark:bg-alpha">
-      <div className='flex justify-between items-center mx-6 pt-6'>
-        <Clock/>
+      <div className="flex justify-between items-center mx-6 pt-6">
+        <Clock />
         <ToolTip />
       </div>
       <div className="flex gap-4 flex-wrap justify-center mx-6 mt-4">
-        <MovieCard />
         <MovieCard />
       </div>
       <div className="flex gap-4 justify-center my-3">
