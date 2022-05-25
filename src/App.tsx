@@ -10,7 +10,7 @@ function App() {
     <div className="h-screen bg-gray-x-light dark:bg-alpha">
       <div className="flex justify-between items-center mx-6 pt-6">
         <Clock />
-        <ToolTip />
+        <ToolTip text={'Scan hier en koop je tickets'} />
       </div>
       <div className="flex gap-4 flex-wrap justify-center mx-6 mt-4">
         <MovieCard />
