@@ -1,4 +1,15 @@
 import { useEffect, useState } from "react"
+export const timerPage = (
+  time: number,
+) => {
+    const [timer, setTimer] = useState(0)
+    
+        timer >= 0 &&
+          setTimeout(
+            () => setTimer(timer + 1),
+            1000,
+          )
+}
 
 export default ({page}:{page:number}) => {
     const [timer, setTimer] = useState(0)
@@ -31,6 +42,7 @@ export default ({page}:{page:number}) => {
             return 'opacity-0'
         }
     }
+    
     useEffect(()=>{
         timer >= 0 && setTimeout(()=> setTimer(timer+ 1),1000);
         setWidth(width+8)

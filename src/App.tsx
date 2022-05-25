@@ -12,13 +12,10 @@ function App() {
         <Clock />
         <ToolTip />
       </div>
-      <div className="flex gap-4 flex-wrap justify-center mx-6 mt-4">
         <MovieCard />
-      </div>
-      <div className="flex gap-4 justify-center my-3">
-        <PageIndicator page={1} />
-        <PageIndicator page={2} />
-      </div>
+      {/* <div className="flex gap-4 justify-center my-3">
+        <PageIndicator page={3} time />
+      </div> */}
       <Trailer
         video={
           'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
