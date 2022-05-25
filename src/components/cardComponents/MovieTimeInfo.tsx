@@ -10,10 +10,10 @@ export default ({
   special: boolean
 }) => {
   const time = movieTime.substring(11, 16)
-  console.log(time)
-  console.log(movieHall)
-  console.log(cosy)
-  console.log(special)
+  //console.log(time)
+  //console.log(movieHall)
+  //console.log(cosy)
+  //console.log(special)
 
   return (
     <div className="w-2/4 text-alpha-xxx-light dark:text-gray font-proxima">
