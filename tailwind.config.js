@@ -25,7 +25,14 @@ module.exports = {
 
       transparant: 'rgba(0,0,0,0)',
     },
-    extend: {},
+    extend: {
+      keyframes: {
+        move: {
+          '0%': { transform: 'translate(0,0)' },
+          '100%': { transform: 'translate(-100%,0)' },
+        }
+      }
+    },
   },
   plugins: [],
 }

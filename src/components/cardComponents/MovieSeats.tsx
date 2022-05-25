@@ -1,7 +1,7 @@
-export default () => {
+export default ({seats}:{seats:number}) => {
   return (
     <div className="flex items-center font-proxima">
-      <p className="text-2xl mb-1 font-bold text-good">{35}</p>
+      <p className="text-2xl mb-1 font-bold text-good">{seats}</p>
       <div className="w-6 ml-2">
         <svg viewBox="0 0 1024 1024">
           <path

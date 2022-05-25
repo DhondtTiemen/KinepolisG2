@@ -9,13 +9,28 @@ import MovieTimeInfo from './cardComponents/MovieTimeInfo'
 import { RootObject } from '../interfaces/Movies'
 import PageIndicator from './PageIndicator'
 import MovieLabel from './cardComponents/MovieLabel'
+import { fetchMovies } from '../utils/fetchMovies'
+import { Movie } from '../classes/Movie'
 
 export default () => {
-  const [movie, setMovie] = useState<RootObject[]>()
   const [labelType, setLabelType] = useState<string>('')
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
+  const [movies, setMovies] = useState<Movie[]|undefined>()
+
+  const sortedMovies = movies?.sort((x, y) => +new Date(x.showtime) - +new Date(y.showtime));
+  console.log('-----------------------------')
+  console.log(sortedMovies)
+  const getMovies = async () => {
+    setMovies(await fetchMovies('KBRG'))
+  }
+// console.log(movies)
+  useEffect(() => {
+    if (!movies) {
+      getMovies()
+    }
+  }, [movies])
 
   useEffect(() => {
     window
@@ -54,19 +69,18 @@ export default () => {
   return (
     <>
       <div className="flex gap-4 flex-wrap  mx-6 mt-4">
-        {movie &&
-          movie.sessions.map((movieSession: RootObject) => (
-            <div className="bg-white dark:shadow-none shadow-md shadow-gray-xx-light border-[3px] border-warning dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden">
+        {sortedMovies?.map((movie) => (
+            <div key={movie.id} className="bg-white dark:shadow-none shadow-md shadow-gray-xx-light border-[3px] border-warning dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden">
               <div className="flex h-[62%]">
                 <div className="w-[35%]">
                   <MovieCover />
                 </div>
                 <div className="w-2/4 mt-4">
                   <MovieTimeInfo
-                    movieTime={movieSession.showtime}
-                    movieHall={movieSession.hall}
-                    cosy={movieSession.hasCosySeating}
-                    special={movieSession.hasSpecialSeating}
+                    movieTime={movie.showtime}
+                    movieHall={movie.hall}
+                    cosy={movie.hasCosySeating}
+                    special={movie.hasSpecialSeating}
                   />
                 </div>
                 <div className=" justify-end" >
@@ -80,12 +94,12 @@ export default () => {
                       size={70}
                       value="https://www.kinepolis.com"
                     />
-                    <MovieSeats />
+                    <MovieSeats seats={movie.availableSeats}/>
                   </div>
                 </div>
               </div>
               <div className="flex ml-4 items-end justify-between mr-4">
-                <MovieInfo />
+                <MovieInfo title={movie.movie.title} genre={movie.movie.genres} version={movie.movie.spokenLanguage.name} />
                 <MovieTechnology />
               </div>
             </div>
