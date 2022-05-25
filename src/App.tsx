@@ -12,7 +12,7 @@ function App() {
         <Clock />
         <ToolTip text={'Scan hier en koop je tickets'} />
       </div>
-        <MovieCard />
+      <MovieCard />
       {/* <div className="flex gap-4 justify-center my-3">
         <PageIndicator page={3} time />
       </div> */}
