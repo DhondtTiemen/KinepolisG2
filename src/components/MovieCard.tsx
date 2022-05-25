@@ -54,7 +54,7 @@ export default () => {
       <div className="flex gap-4 flex-wrap  mx-6 mt-4">
         {movie &&
           movie.sessions.map((movieSession: RootObject) => (
-            <div className="bg-white shadow-md shadow-gray-xx-light dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden">
+            <div className="bg-white dark:shadow-none shadow-md shadow-gray-xx-light dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden">
               <div className="flex h-[62%]">
                 <div className="w-[35%]">
                   <MovieCover />
