@@ -1,3 +1,4 @@
+import Clock from './components/Clock'
 import MovieCard from './components/MovieCard'
 import PageIndicator from './components/PageIndicator'
 import ToolTip from './components/ToolTip'
@@ -7,7 +8,8 @@ import TrailerCard from './components/TrailerCard'
 function App() {
   return (
     <div className="h-screen bg-gray-x-light dark:bg-alpha">
-      <div>
+      <div className='flex justify-between items-center mx-6 pt-6'>
+        <Clock/>
         <ToolTip />
       </div>
       <div className="flex gap-4 flex-wrap justify-center mx-6 mt-4">
