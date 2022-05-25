@@ -24,24 +24,6 @@ export default ({page}:{page:number}) => {
                 return w-80*(page2-1) 
             }
         }
-        // if (page2 == 1)
-        // {
-        //     if (w>80){
-        //         return 80
-        //     }
-        //     return w
-        // }
-        // if (page2 == 2){
-        //     if (w>80){
-        //         if (w>160){
-        //             return 80
-        //         }
-        //         return w -80
-
-        //     }else{
-        //         return 0
-        //     }
-        // }else{ return 0}
     }
     const checkTimeOver = ()=>{
         if (timeOver==false){
