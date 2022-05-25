@@ -25,6 +25,7 @@ export class Movie {
     movie,
     maxSeats = 250,
     availableSeats = Math.floor(Math.random() * 250),
+    popular = false,
   }: ISession) {
     Object.assign(this, {
       complexOperator,
@@ -50,6 +51,7 @@ export class Movie {
       movie,
       maxSeats,
       availableSeats,
+      popular,
     })
   }
 

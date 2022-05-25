@@ -232,4 +232,5 @@ export interface ISession {
   movie?: IMovie
   maxSeats?: number
   availableSeats?: number
+  popular?: boolean
 }
