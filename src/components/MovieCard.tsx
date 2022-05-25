@@ -81,8 +81,7 @@ export default () => {
           )}
       </div>
       <div className="flex gap-4 justify-center my-3">
-        <PageIndicator page={1} />
-        <PageIndicator page={2} />
+        <PageIndicator page={3} />
       </div>
     </>
   )
