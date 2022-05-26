@@ -10,7 +10,7 @@ export const fetchMovies = async (location: string) => {
   const movies = [] as Movie[]
 
   return await fetch(
-    `https://kinepolisweb-programmation-int.kinepolis.com/api//Programmation/BE/NL/${currentDate}/${location}/WWW`,
+    `https://kinepolisweb-programmation.kinepolis.com/api//Programmation/BE/NL/${currentDate}/${location}/WWW`,
   )
     .then((movieData) => movieData.json())
     .then((movieData) => {

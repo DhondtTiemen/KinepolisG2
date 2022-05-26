@@ -22,6 +22,7 @@ export default () => {
   const sortedMovies = movies?.sort((x, y) => +new Date(x.showtime) - +new Date(y.showtime));
   console.log('-----------------------------')
   console.log(sortedMovies)
+
   const getMovies = async () => {
     setMovies(await fetchMovies('KBRG'))
   }
