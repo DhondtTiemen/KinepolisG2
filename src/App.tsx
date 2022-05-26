@@ -29,7 +29,7 @@ export default function App() {
       </div>
 
       {/* LIST MET MOVIES */}
-      <ul className="text-white">
+      {/* <ul className="text-white">
         {movies?.map((movie) => (
           <li key={movie.id}>
             {movie.movie.title}
@@ -38,9 +38,9 @@ export default function App() {
             </ul>
           </li>
         ))}
-      </ul>
-      {/* LIST MET MOVIES */}
+      </ul> */}
 
+      {/* LIST MET MOVIES */}
       <MovieCard />
       {/*<div className="flex gap-4 justify-center my-3">
       <PageIndicator page={3} time />
