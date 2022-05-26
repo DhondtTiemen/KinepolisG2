@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 export default ({lastTickets, availableSeats}: {lastTickets: boolean, availableSeats: number}) => {
 
   return (
