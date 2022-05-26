@@ -1,8 +1,10 @@
-export default ({availableSeats, maxSeats}:{availableSeats:number, maxSeats: number}) => {
-  console.log(availableSeats)
+import { useState } from "react"
+
+export default ({lastTickets, availableSeats}: {lastTickets: boolean, availableSeats: number}) => {
+
   return (
     <div className="flex items-center font-proxima">
-      <p className={`text-2xl mb-1 font-bold ${maxSeats / 100 * 10 > availableSeats ? "text-warning" : "text-good"}`}>{availableSeats}</p>
+      <p className={`text-2xl mb-1 font-bold ${lastTickets == true ? "text-warning" : "text-good"}`}>{availableSeats}</p>
       <div className="w-6 ml-2">
         <svg viewBox="0 0 1024 1024">
           <path

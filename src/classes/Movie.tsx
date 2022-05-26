@@ -25,6 +25,7 @@ export class Movie {
     movie,
     maxSeats = Math.floor(Math.random() * (500 - 100) + 100),
     availableSeats = Math.floor(Math.random() * maxSeats),
+    lastTickets = false,
     popular = false,
   }: ISession) {
     Object.assign(this, {
@@ -51,6 +52,7 @@ export class Movie {
       movie,
       maxSeats,
       availableSeats,
+      lastTickets,
       popular,
     })
   }
