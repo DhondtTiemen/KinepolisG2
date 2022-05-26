@@ -94,7 +94,7 @@ export default () => {
                       size={70}
                       value="https://www.kinepolis.com"
                     />
-                    <MovieSeats seats={movie.availableSeats}/>
+                    <MovieSeats availableSeats={movie.availableSeats} maxSeats={movie.maxSeats}/>
                   </div>
                 </div>
               </div>

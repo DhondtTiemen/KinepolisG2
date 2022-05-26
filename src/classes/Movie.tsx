@@ -23,8 +23,8 @@ export class Movie {
     sessionAttributes,
     id,
     movie,
-    maxSeats = 250,
-    availableSeats = Math.floor(Math.random() * 250),
+    maxSeats = Math.floor(Math.random() * (500 - 100) + 100),
+    availableSeats = Math.floor(Math.random() * maxSeats),
     popular = false,
   }: ISession) {
     Object.assign(this, {
