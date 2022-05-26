@@ -25,7 +25,7 @@ export default () => {
   const getMovies = async () => {
     setMovies(await fetchMovies('KBRG'))
   }
-// console.log(movies)
+  //console.log(movies)
   useEffect(() => {
     if (!movies) {
       getMovies()
@@ -100,7 +100,7 @@ export default () => {
               </div>
               <div className="flex ml-4 items-end justify-between mr-4">
                 <MovieInfo title={`${movie.movie.title.length > 25 ? `${movie.movie.title.substring(0, 20)}...` : movie.movie.title}`} genre={movie.movie.genres} version={movie.movie.spokenLanguage.name} />
-                <MovieTechnology />
+                <MovieTechnology sessionAttributes={movie.sessionAttributes[]}/>
               </div>
             </div>
           ))}
