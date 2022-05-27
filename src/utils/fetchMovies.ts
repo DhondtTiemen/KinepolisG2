@@ -15,23 +15,22 @@ export const fetchMovies = async (location: string) => {
     .then((movieData) => movieData.json())
     .then((movieData) => {
       movieData.sessions.map((session: ISession) => {
+        // Session in MovieObject plaatsen
         const movieObject = new Movie(session)
+
+        // Film koppelen aan MovieObject
         movieObject.movie = movieData.films.find(
           (item: IMovie) => item.id == session.film.id,
         )
 
-        // console.log(movieObject.maxSeats)
-        if (movieObject.maxSeats / 100 * 10 > movieObject.availableSeats) {
-          // console.log('Last tickets')
+        // Berekenen of lastTickets == true
+        if ((movieObject.maxSeats / 100) * 10 > movieObject.availableSeats) {
           movieObject.lastTickets = true
-          // console.log(movieObject.lastTickets)
         }
-        else {
-          // console.log('Tickets available')
-        }
-        //console.log(session)
+
+        // MovieObject toevoegen aan movies array
         movies.push(movieObject)
       })
     })
-    .then(() => movies)
+    .then(() => movies) // Return movies array
 }
