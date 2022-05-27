@@ -17,12 +17,13 @@ export default () => {
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
-  const [movies, setMovies] = useState<Movie[]|undefined>()
+  const [movies, setMovies] = useState<Movie[]>()
 
-  const sortedMovies = movies?.sort((x, y) => +new Date(x.showtime) - +new Date(y.showtime));
-  console.log('-----------------------------')
-  console.log(sortedMovies)
-
+  const sortedMovies = movies?.sort(
+    (x, y) => +new Date(x.showtime) - +new Date(y.showtime),
+  )
+  //console.log('-----------------------------')
+  //console.log(sortedMovies)
   const getMovies = async () => {
     setMovies(await fetchMovies('KBRG'))
   }
@@ -45,66 +46,57 @@ export default () => {
     }
   }, [])
 
-  const fetchData = () => {
-    const current = new Date()
-    const currentDate = `${current.getFullYear()}-${
-      current.getMonth() + 1
-    }-${current.getDate()}`
-
-    const currentLocation = 'KBRG'
-
-    fetch(
-      `https://kinepolisweb-programmation-int.kinepolis.com/api//Programmation/BE/NL/${currentDate}/${currentLocation}/WWW`,
-    )
-      .then((movieItem) => movieItem.json())
-      .then((movieItem) => {
-        setMovie(movieItem)
-        // console.log(movieItem)
-      })
-  }
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
   return (
     <>
       <div className="flex gap-4 flex-wrap  mx-6 mt-4">
         {sortedMovies?.map((movie) => (
-            <div key={movie.id} className="bg-white dark:shadow-none shadow-md shadow-gray-xx-light border-[3px] border-warning dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden">
-              <div className="flex h-[62%]">
-                <div className="w-[35%]">
-                  <MovieCover images={movie.movie.images}/>
-                </div>
-                <div className="w-2/4 mt-4">
-                  <MovieTimeInfo
-                    movieTime={movie.showtime}
-                    movieHall={movie.hall}
-                    cosy={movie.hasCosySeating}
-                    special={movie.hasSpecialSeating}
+          <div
+            key={movie.id}
+            className="bg-white dark:shadow-none shadow-md shadow-gray-xx-light border-[3px] border-warning dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden"
+          >
+            <div className="flex h-[62%]">
+              <div className="w-[35%]">
+                <MovieCover images={movie.movie.images} />
+              </div>
+              <div className="w-2/4 mt-4">
+                <MovieTimeInfo
+                  movieTime={movie.showtime}
+                  movieHall={movie.hall}
+                  cosy={movie.hasCosySeating}
+                  special={movie.hasSpecialSeating}
+                />
+              </div>
+              <div className=" justify-end">
+                <MovieLabel text="POPULAR" type={labelType} />
+
+                <div className="flex flex-wrap justify-end mr-4 mt-2">
+                  <QRCodeSVG
+                    bgColor="transparent"
+                    fgColor={darkMode ? 'white' : '#004680'}
+                    size={70}
+                    value="https://www.kinepolis.com"
+                  />
+                  <MovieSeats
+                    lastTickets={movie.lastTickets}
+                    availableSeats={movie.availableSeats}
                   />
                 </div>
-                <div className=" justify-end" >
-                  
-                  <MovieLabel text="POPULAR" type={labelType} />
-
-                  <div className="flex flex-wrap justify-end mr-4 mt-2">
-                    <QRCodeSVG
-                      bgColor="transparent"
-                      fgColor={darkMode ? 'white' : '#004680'}
-                      size={70}
-                      value="https://www.kinepolis.com"
-                    />
-                    <MovieSeats lastTickets={movie.lastTickets} availableSeats={movie.availableSeats}/>
-                  </div>
-                </div>
-              </div>
-              <div className="flex ml-4 items-end justify-between mr-4">
-                <MovieInfo title={`${movie.movie.title.length > 25 ? `${movie.movie.title.substring(0, 20)}...` : movie.movie.title}`} genre={movie.movie.genres} version={movie.movie.spokenLanguage.name} />
-                <MovieTechnology sessionAttributes={movie.sessionAttributes}/>
               </div>
             </div>
-          ))}
+            <div className="flex ml-4 items-end justify-between mr-4">
+              <MovieInfo
+                title={`${
+                  movie.movie.title.length > 25
+                    ? `${movie.movie.title.substring(0, 20)}...`
+                    : movie.movie.title
+                }`}
+                genre={movie.movie.genres}
+                version={movie.movie.spokenLanguage.name}
+              />
+              <MovieTechnology sessionAttributes={movie.sessionAttributes} />
+            </div>
+          </div>
+        ))}
       </div>
       <div className="flex gap-4 justify-center my-3">
         <PageIndicator page={3} />

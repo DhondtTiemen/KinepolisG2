@@ -13,9 +13,9 @@ export interface Format {
 
 export interface Event {
   isActive: boolean
-  code: string
-  name: string
-  id: string
+  code?: string
+  name?: string
+  id?: string
 }
 
 export interface Film {
@@ -33,37 +33,6 @@ export interface SessionAttribute {
   promoted: boolean
   name: string
   id: string
-}
-
-export interface Event2 {
-  isActive: boolean
-  code: string
-  name: string
-  id: string
-}
-
-export interface Session {
-  complexOperator: string
-  documentType: string
-  country: string
-  language: string
-  showtime: Date
-  businessDay: Date
-  hall: number
-  vistaSessionId: number
-  hasSeatingPlan: boolean
-  hasSpecialSeating: boolean
-  hasCosySeating: boolean
-  isSoldOut: boolean
-  isSneakPreview: boolean
-  isPublicScreening: boolean
-  circuit: string
-  film: Film
-  cinemaLabel: string
-  mainComplex: string
-  sessionAttributes: SessionAttribute[]
-  id: string
-  event?: Event2
 }
 
 export interface Censor {
@@ -92,15 +61,6 @@ export interface CountryOfOrigin {
   id: string
 }
 
-export interface Event3 {
-  isActive: boolean
-  shortName: string
-  description: string
-  code: string
-  name: string
-  id: string
-}
-
 export interface Image {
   mediaClass: string
   lastModificationDate: Date
@@ -123,57 +83,11 @@ export interface Genre {
   name: string
 }
 
-export interface Attribute2 {
-  isActive: boolean
-  imageUrl: string
-  code: string
-  promoted: boolean
-  name: string
-  id: string
-}
-
 export interface Trailer {
   mediaClass: string
   lastModificationDate: Date
   mediaType: string
   url: string
-}
-
-export interface Film2 {
-  title: string
-  censor: Censor
-  releaseDate: Date
-  synopsis: string
-  spokenLanguage: SpokenLanguage
-  subtitles: Subtitles
-  duration: number
-  countryOfOrigin: CountryOfOrigin
-  corporateId: number
-  event: Event3
-  imdbCode: string
-  releaseType: string
-  audioLanguage: string
-  originalAudioLanguage: string
-  shortSynopsis: string
-  sortingNumber: number
-  distributorName: string
-  showAsFutureRelease: boolean
-  images: Image[]
-  filmPersons: FilmPerson[]
-  genres: Genre[]
-  attributes: Attribute2[]
-  name: string
-  country: string
-  language: string
-  documentType: string
-  id: string
-  trailers: Trailer[]
-  _circuit: string
-}
-
-export interface RootObject {
-  films: Film2[]
-  sessions: Session[]
 }
 
 export interface IMovie {
@@ -186,7 +100,7 @@ export interface IMovie {
   duration: number
   countryOfOrigin: CountryOfOrigin
   corporateId: number
-  event: Event3
+  event: Event
   imdbCode: string
   releaseType: string
   audioLanguage: string
@@ -198,7 +112,7 @@ export interface IMovie {
   images: Image[]
   filmPersons: FilmPerson[]
   genres: Genre[]
-  attributes: Attribute2[]
+  attributes: Attribute[]
   name: string
   country: string
   language: string
@@ -232,6 +146,6 @@ export interface ISession {
   movie?: IMovie
   maxSeats?: number
   availableSeats?: number
-  lastTickets?: boolean
   popular?: boolean
+  lastTickets?: boolean
 }
