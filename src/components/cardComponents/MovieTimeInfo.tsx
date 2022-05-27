@@ -1,4 +1,4 @@
-export default ({
+export default function MovieTimeInfo({
   movieTime,
   movieHall,
   cosy,
@@ -8,7 +8,7 @@ export default ({
   movieHall: string
   cosy: boolean
   special: boolean
-}) => {
+}) {
   const time = movieTime.substring(11, 16)
   //console.log(time)
   //console.log(movieHall)

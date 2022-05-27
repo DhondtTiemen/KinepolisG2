@@ -1,12 +1,11 @@
 import Clock from './components/Clock'
-import MovieCard from './components/MovieCard'
-import PageIndicator from './components/PageIndicator'
 import ToolTip from './components/ToolTip'
 import Trailer from './components/Trailer'
 import TrailerCard from './components/TrailerCard'
 import { useEffect, useState } from 'react'
 import { fetchMovies } from './utils/fetchMovies'
 import { Movie } from './classes/Movie'
+import MovieList from './components/MovieList'
 
 export default function App() {
   const [movies, setMovies] = useState<Movie[]>()
@@ -41,7 +40,8 @@ export default function App() {
       </ul> */}
 
       {/* LIST MET MOVIES */}
-      <MovieCard />
+      {/*<MovieCard />*/}
+      <MovieList moviesPerPage={8} />
       {/*<div className="flex gap-4 justify-center my-3">
       <PageIndicator page={3} time />
       {/*</div>*/}
