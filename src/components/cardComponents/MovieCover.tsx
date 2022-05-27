@@ -1,13 +1,12 @@
 import { Image } from '../../interfaces/Movies'
 
-export default ({ images }: { images: Image[] }) => {
+export default function MovieCover({ images }: { images: Image[] }) {
   const baseURL = 'https://cdn.kinepolis.be/images/'
-
   return (
     <>
       {images?.map((cover) =>
         cover.mediaType == 'Poster Graphic' ? (
-          <div className="">
+          <div key={cover.url}>
             <img
               className="rounded-md w-[70px] h-[100px] ml-4 mt-4 relative z-10"
               src={`${baseURL}${cover.url}`}

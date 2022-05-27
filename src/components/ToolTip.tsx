@@ -1,4 +1,4 @@
-export default ({ text }: { text: string }) => {
+export default function ToolTip({ text }: { text: string }) {
   return (
     <div className="w-36 rounded-2xl py-1.5 px-3.5 bg-alpha-x-light dark:bg-alpha-xx-light">
       <h1 className="font-proxima font-bold uppercase text-sm text-white text-center">

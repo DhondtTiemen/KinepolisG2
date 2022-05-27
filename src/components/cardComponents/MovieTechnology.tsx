@@ -1,16 +1,16 @@
 import { SessionAttribute } from '../../interfaces/Movies'
 
-export default ({
+export default function MovieTechnology({
   sessionAttributes,
 }: {
   sessionAttributes: SessionAttribute[]
-}) => {
+}) {
   const baseURL = 'https://cdn.kinepolis.be/images'
 
   return (
     <div className="flex gap-2 items-center">
       {sessionAttributes?.map((attribute) => (
-        <div className="bg-white rounded-full w-4 h-4 ">
+        <div className="bg-white rounded-full w-4 h-4 " key={attribute.id}>
           <img
             src={`${baseURL}${attribute.imageUrl}`}
             alt={attribute.shortName}
