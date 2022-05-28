@@ -11,6 +11,7 @@ import { Movie } from '../../classes/Movie'
 
 export default function MovieCard({ movie }: { movie: Movie }) {
   const [labelType, setLabelType] = useState<string>('')
+  const [label, setLabel] = useState<boolean>(false)
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
@@ -26,8 +27,33 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         .removeEventListener('change', () => {})
     }
   }, [])
+
+  useEffect(() => {
+    if (movie.lastTickets == true || movie.popular == true) {
+      if (movie.popular == true) {
+        setLabel(true)
+        setLabelType('popular')
+      } else {
+        setLabel(true)
+        setLabelType('lastTickets')
+      }
+    } else {
+      setLabel(false)
+      setLabelType('')
+    }
+    console.log(label, labelType)
+  }, [label])
+
   return (
-    <div className="bg-white dark:shadow-none shadow-md shadow-gray-xx-light border-[3px] border-warning dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden">
+    <div
+      className={`${
+        labelType == 'popular'
+          ? 'border-alpha-xx-light border-[3px]'
+          : labelType == 'lastTickets'
+          ? 'border-warning border-[3px]'
+          : 'border-none'
+      }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light  dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
+    >
       <div className="flex h-[62%]">
         <div className="w-[35%]">
           <MovieCover images={movie.movie.images} />
@@ -41,7 +67,11 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           />
         </div>
         <div className=" justify-end">
-          <MovieLabel text="POPULAR" type={labelType} />
+          <MovieLabel
+            text={labelType.toUpperCase()}
+            visible={label}
+            type={labelType}
+          />
 
           <div className="flex flex-wrap justify-end mr-4 mt-2">
             <QRCodeSVG
