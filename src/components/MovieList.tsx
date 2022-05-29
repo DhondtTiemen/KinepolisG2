@@ -45,7 +45,7 @@ export default function MovieList({
             return <MovieCard movie={movie} key={movie.id} />
           })}
       </div>
-      <div className="flex gap-4 justify-center my-3">
+      <div className="flex gap-4 justify-center my-3 mt-[25px]">
         <PageIndicator page={pages} />
       </div>
     </>
