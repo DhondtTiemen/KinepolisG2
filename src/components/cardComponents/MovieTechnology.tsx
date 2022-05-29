@@ -10,7 +10,7 @@ export default function MovieTechnology({
   return (
     <div className="flex gap-2 items-center">
       {sessionAttributes?.map((attribute) => (
-        <div className="bg-white rounded-full w-4 h-4 " key={attribute.id}>
+        <div className="bg-white rounded-full w-5 h-5 " key={attribute.id}>
           <img
             src={`${baseURL}${attribute.imageUrl}`}
             alt={attribute.shortName}
