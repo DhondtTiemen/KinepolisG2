@@ -43,7 +43,7 @@ export default function PageIndicator({ page }: { page: number }) {
           <div className={`${checkTimeOver()}`}>
             <div
               style={{ width: checkWidth(width, i + 1), maxWidth: 80 }}
-              className={`bg-warning rounded-full h-3 ease-linear duration-1000`}
+              className={`dark:bg-warning bg-error rounded-full h-3 ease-linear duration-1000`}
             ></div>
           </div>
         </div>,
