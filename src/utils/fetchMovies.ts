@@ -24,7 +24,7 @@ export const fetchMovies = async (location: string) => {
         )
 
         // Berekenen of lastTickets == true
-        if ((movieObject.maxSeats / 100) * 10 > movieObject.availableSeats) {
+        if ((movieObject.maxSeats / 100) * 15 > movieObject.availableSeats) {
           movieObject.lastTickets = true
         }
 

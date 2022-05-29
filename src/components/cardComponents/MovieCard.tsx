@@ -10,7 +10,6 @@ import MovieLabel from './MovieLabel'
 import { Movie } from '../../classes/Movie'
 
 export default function MovieCard({ movie }: { movie: Movie }) {
-  const [labelType, setLabelType] = useState<string>('')
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
@@ -26,8 +25,17 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         .removeEventListener('change', () => {})
     }
   }, [])
+
   return (
-    <div className="bg-white dark:shadow-none shadow-md shadow-gray-xx-light border-[3px] border-warning dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden">
+    <div
+      className={`${
+        movie.popular == true
+          ? 'border-alpha-xx-light border-[3px]'
+          : movie.lastTickets == true
+          ? 'border-warning border-[3px]'
+          : 'border-none'
+      }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light  dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
+    >
       <div className="flex h-[62%]">
         <div className="w-[35%]">
           <MovieCover images={movie.movie.images} />
@@ -41,7 +49,23 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           />
         </div>
         <div className=" justify-end">
-          <MovieLabel text="POPULAR" type={labelType} />
+          <MovieLabel
+            text={`${
+              movie.popular == true
+                ? 'POPULAR'
+                : movie.lastTickets == true
+                ? 'LAST TICKETS'
+                : ''
+            }`}
+            visible={
+              movie.popular == true
+                ? true
+                : movie.lastTickets == true
+                ? true
+                : false
+            }
+            type={`${movie.popular == true ? 'popular' : 'lasttickets'}`}
+          />
 
           <div className="flex flex-wrap justify-end mr-4 mt-2">
             <QRCodeSVG
