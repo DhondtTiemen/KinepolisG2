@@ -10,8 +10,6 @@ import MovieLabel from './MovieLabel'
 import { Movie } from '../../classes/Movie'
 
 export default function MovieCard({ movie }: { movie: Movie }) {
-  const [labelType, setLabelType] = useState<string>('')
-  const [label, setLabel] = useState<boolean>(false)
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
@@ -28,28 +26,12 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     }
   }, [])
 
-  useEffect(() => {
-    if (movie.lastTickets == true || movie.popular == true) {
-      if (movie.popular == true) {
-        setLabel(true)
-        setLabelType('popular')
-      } else {
-        setLabel(true)
-        setLabelType('lastTickets')
-      }
-    } else {
-      setLabel(false)
-      setLabelType('')
-    }
-    console.log(label, labelType)
-  }, [label])
-
   return (
     <div
       className={`${
-        labelType == 'popular'
+        movie.popular == true
           ? 'border-alpha-xx-light border-[3px]'
-          : labelType == 'lastTickets'
+          : movie.lastTickets == true
           ? 'border-warning border-[3px]'
           : 'border-none'
       }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light  dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
@@ -68,9 +50,21 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         </div>
         <div className=" justify-end">
           <MovieLabel
-            text={labelType.toUpperCase()}
-            visible={label}
-            type={labelType}
+            text={`${
+              movie.popular == true
+                ? 'POPULAR'
+                : movie.lastTickets == true
+                ? 'LAST TICKETS'
+                : ''
+            }`}
+            visible={
+              movie.popular == true
+                ? true
+                : movie.lastTickets == true
+                ? true
+                : false
+            }
+            type={`${movie.popular == true ? 'popular' : 'lasttickets'}`}
           />
 
           <div className="flex flex-wrap justify-end mr-4 mt-2">
