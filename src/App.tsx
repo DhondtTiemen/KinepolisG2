@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <div className="h-screen bg-gray-x-light dark:bg-alpha">
-      <div className="flex justify-between items-center mx-6 pt-6">
+      <div className="flex justify-between items-center mx-6 pt-4">
         <Clock />
         <ToolTip text={'Scan hier en koop je tickets'} />
       </div>
