@@ -22,9 +22,12 @@ export default function App() {
 
   return (
     <div className="h-screen bg-gray-x-light dark:bg-alpha">
-      <div className="flex justify-between items-center mx-6 pt-4">
-        <Clock />
-        <ToolTip text={'Scan hier en koop je tickets'} />
+      <div className="h-[60%]">
+        <div className="flex justify-between items-center mx-6 pt-4">
+          <Clock />
+          <ToolTip text={'Scan hier en koop je tickets'} />
+        </div>
+        <MovieList moviesPerPage={8} />
       </div>
 
       {/* LIST MET MOVIES */}
@@ -41,27 +44,28 @@ export default function App() {
 
       {/* LIST MET MOVIES */}
       {/*<MovieCard />*/}
-      <MovieList moviesPerPage={8} />
       {/*<div className="flex gap-4 justify-center my-3">
       <PageIndicator page={3} time />
       {/*</div>*/}
-      <Trailer
-        video={
-          'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
-        }
-      >
-        <TrailerCard
-          link="https://www.kinepolis.be"
-          text="Koop hier je tickets voor"
-          subText="Clifford De Grote Rode Hond"
-        />
-        <TrailerCard
-          link="https://www.kinepolis.be"
-          text="Film niet gevonden?"
-          subText="Scan hier voor andere films"
-          secondary
-        />
-      </Trailer>
+      <div className="relative h-[30%]">
+        <Trailer
+          video={
+            'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
+          }
+        >
+          <TrailerCard
+            link="https://www.kinepolis.be"
+            text="Koop hier je tickets voor"
+            subText="Clifford De Grote Rode Hond"
+          />
+          <TrailerCard
+            link="https://www.kinepolis.be"
+            text="Film niet gevonden?"
+            subText="Scan hier voor andere films"
+            secondary
+          />
+        </Trailer>
+      </div>
     </div>
   )
 }
