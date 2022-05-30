@@ -33,10 +33,10 @@ export default function MovieInfo({
       <h1 className="text-2xl text-alpha-x-light  dark:text-white font-bold">
         {title}
       </h1>
-      <p className="text-xs text-alpha-xxx-light dark:text-gray font-medium">
+      <p className="text-[14px] text-alpha-xxx-light -mt-[2px] dark:text-gray font-medium">
         {version}
       </p>
-      <p className="text-[8px] text-error dark:text-warning mt-1 ">
+      <p className="text-[11px] text-error dark:text-warning  ">
         {ArrayToString(genre).toString().replace(',', ' | ')}
       </p>
     </div>

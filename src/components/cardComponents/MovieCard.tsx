@@ -36,7 +36,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           : 'border-none'
       }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light  dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
     >
-      <div className="flex h-[62%]">
+      <div className="flex h-[61%]">
         <div className="w-[35%]">
           <MovieCover images={movie.movie.images} />
         </div>
@@ -67,11 +67,11 @@ export default function MovieCard({ movie }: { movie: Movie }) {
             type={`${movie.popular == true ? 'popular' : 'lasttickets'}`}
           />
 
-          <div className="flex flex-wrap justify-end mr-4 mt-2">
+          <div className="flex flex-wrap justify-end mr-4 mt-4">
             <QRCodeSVG
               bgColor="transparent"
               fgColor={darkMode ? 'white' : '#004680'}
-              size={70}
+              size={65}
               value="https://www.kinepolis.com"
             />
             <MovieSeats
