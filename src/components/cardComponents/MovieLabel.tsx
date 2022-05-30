@@ -11,7 +11,7 @@ export default function MovieLabel({
     return
   } else {
     return (
-      <div className="flex  justify-end mr-4">
+      <div className="flex justify-end mr-4 -mb-2">
         <div
           className={`w-[90%] h-[22px] ${
             type == 'popular' ? 'bg-alpha-xx-light' : 'bg-warning'
