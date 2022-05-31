@@ -21,8 +21,8 @@ export default function App() {
   }, [movies])
 
   return (
-    <div className="h-screen bg-gray-x-light dark:bg-alpha">
-      <div className="h-[60%]">
+    <div className="flex flex-col justify-between h-screen bg-gray-x-light dark:bg-alpha">
+      <div>
         <div className="flex justify-between items-center mx-6 pt-4">
           <Clock />
           <ToolTip text={'Scan hier en koop je tickets'} />
@@ -47,7 +47,7 @@ export default function App() {
       {/*<div className="flex gap-4 justify-center my-3">
       <PageIndicator page={3} time />
       {/*</div>*/}
-      <div className="relative h-[30%]">
+      <div className="h-1/3">
         <Trailer
           video={
             'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
