@@ -32,7 +32,7 @@ export default function MovieList({
   }, [movies])
 
   return (
-    <>
+    <div className="flex flex-col justify-between h-[93%]">
       <div className="flex gap-4 flex-wrap  mx-6 mt-4">
         {movies
           ?.slice(
@@ -45,9 +45,9 @@ export default function MovieList({
             return <MovieCard movie={movie} key={movie.id} />
           })}
       </div>
-      <div className="flex gap-4 justify-center my-3 mt-[25px]">
+      <div className="flex gap-4 justify-center my-3 mb-[20px]">
         <PageIndicator page={pages} />
       </div>
-    </>
+    </div>
   )
 }
