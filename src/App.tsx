@@ -27,7 +27,7 @@ export default function App() {
           <Clock />
           <ToolTip text={'Scan hier en koop je tickets'} />
         </div>
-        <MovieList moviesPerPage={8} />
+        <MovieList moviesPerPage={8} location={'KBRG'} timing={10} />
       </div>
 
       {/* LIST MET MOVIES */}
@@ -47,25 +47,23 @@ export default function App() {
       {/*<div className="flex gap-4 justify-center my-3">
       <PageIndicator page={3} time />
       {/*</div>*/}
-      <div className="h-1/3">
-        <Trailer
-          video={
-            'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
-          }
-        >
-          <TrailerCard
-            link="https://www.kinepolis.be"
-            text="Koop hier je tickets voor"
-            subText="Clifford De Grote Rode Hond"
-          />
-          <TrailerCard
-            link="https://www.kinepolis.be"
-            text="Film niet gevonden?"
-            subText="Scan hier voor andere films"
-            secondary
-          />
-        </Trailer>
-      </div>
+      <Trailer
+        video={
+          'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
+        }
+      >
+        <TrailerCard
+          link="https://www.kinepolis.be"
+          text="Koop hier je tickets voor"
+          subText="Clifford De Grote Rode Hond"
+        />
+        <TrailerCard
+          link="https://www.kinepolis.be"
+          text="Film niet gevonden?"
+          subText="Scan hier voor andere films"
+          secondary
+        />
+      </Trailer>
     </div>
   )
 }
