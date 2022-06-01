@@ -11,7 +11,13 @@ import { useEffect, useState } from 'react'
 //           )
 // }
 
-export default function PageIndicator({ page }: { page: number }) {
+export default function PageIndicator({
+  page,
+  timing,
+}: {
+  page: number
+  timing: number
+}) {
   const [timer, setTimer] = useState<number>(0)
   const [width, setWidth] = useState<number>(0)
   const [timeOver, setTimeOver] = useState<boolean>(false)
@@ -57,7 +63,7 @@ export default function PageIndicator({ page }: { page: number }) {
     timer >= 0 && setTimeout(() => setTimer(timer + 1), 1000)
     // console.log(timer)
     setWidth(width + 8)
-    if (timer > page * 10) {
+    if (timer > page * timing) {
       setTimeOver(true)
       setTimer(0)
       setWidth(0)

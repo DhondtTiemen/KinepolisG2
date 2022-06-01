@@ -15,7 +15,7 @@ export default function MovieList({
 }) {
   const [movies, setMovies] = useState<Movie[]>()
   const [pages, setPages] = useState<number>(0)
-  const [currentPage, setCurrentPage] = useState<number>(3)
+  const [currentPage, setCurrentPage] = useState<number>(0)
 
   const sortedMovies = async (list: Movie[]) => {
     setMovies(
@@ -35,6 +35,16 @@ export default function MovieList({
     }
   }, [movies])
 
+  useEffect(() => {
+    setTimeout(() => {
+      if (currentPage == pages - 1) {
+        setCurrentPage(0)
+      } else {
+        setCurrentPage(currentPage + 1)
+      }
+    }, timing * 1000)
+  }, [currentPage])
+
   return (
     <div className="flex flex-col justify-between h-[93%]">
       <div className="flex gap-4 flex-wrap  mx-6 mt-4">
@@ -50,7 +60,7 @@ export default function MovieList({
           })}
       </div>
       <div className="flex gap-4 justify-center my-3 mb-[20px]">
-        <PageIndicator page={pages} />
+        <PageIndicator page={pages} timing={timing} />
       </div>
     </div>
   )
