@@ -6,7 +6,7 @@ export default function MovieSeats({
   availableSeats: number
 }) {
   return (
-    <div className="flex items-center font-proxima">
+    <div className="flex items-center font-proxima mt-[2px]">
       <p
         className={`text-2xl mb-1 font-bold ${
           lastTickets == true ? 'text-warning' : 'text-good'
@@ -14,7 +14,7 @@ export default function MovieSeats({
       >
         {availableSeats}
       </p>
-      <div className="w-6 ml-2">
+      <div className="w-6 ml-2 mb-[2px]">
         <svg viewBox="0 0 1024 1024">
           <path
             className="dark:stroke-gray stroke-alpha-xxx-light stroke-[16px] fill-alpha-xxx-light dark:fill-gray"
