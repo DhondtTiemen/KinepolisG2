@@ -21,7 +21,11 @@ export default function App() {
   }, [movies])
 
   return (
-    <div className="flex flex-col justify-between h-screen bg-gray-x-light dark:bg-alpha">
+    <div
+      className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light "
+      style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
+    >
+      {/* <div className="flex flex-col justify-between h-screen dark:bg-black dark:bg-opacity-70  backdrop-blur-xl"> */}
       <div className="h-2/3">
         <div className="flex justify-between items-center mx-6 pt-4">
           <Clock />
@@ -64,6 +68,7 @@ export default function App() {
           secondary
         />
       </Trailer>
+      {/* </div> */}
     </div>
   )
 }
