@@ -30,9 +30,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     <div
       className={`${
         movie.popular == true
-          ? 'border-alpha-xx-light border-[3px]'
+          ? 'dark:border-alpha-xx-light border-alpha-x-light border-[3px]'
           : movie.lastTickets == true
-          ? 'border-warning border-[3px]'
+          ? 'dark:border-warning border-error border-[3px]'
           : 'border-none'
       }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light  dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
     >
