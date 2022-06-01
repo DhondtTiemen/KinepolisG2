@@ -1,6 +1,6 @@
 import { QRCodeSVG } from 'qrcode.react'
 import { useEffect, useState } from 'react'
-import TrailerCardInterface from '../interfaces/trailerCardInterface'
+import { TrailerCardInterface } from '../interfaces/trailerInterface'
 
 export default function TrailerCard({
   link,

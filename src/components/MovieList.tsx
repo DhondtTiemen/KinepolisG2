@@ -6,8 +6,12 @@ import MovieCard from './cardComponents/MovieCard'
 
 export default function MovieList({
   moviesPerPage,
+  location,
+  timing,
 }: {
   moviesPerPage: number
+  location: string
+  timing: number
 }) {
   const [movies, setMovies] = useState<Movie[]>()
   const [pages, setPages] = useState<number>(0)
@@ -22,7 +26,7 @@ export default function MovieList({
   }
 
   const getMovies = async () => {
-    sortedMovies(await fetchMovies('KBRG'))
+    sortedMovies(await fetchMovies(location))
   }
 
   useEffect(() => {
