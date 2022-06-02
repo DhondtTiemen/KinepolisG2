@@ -20,7 +20,6 @@ export default function PageIndicator({
 }) {
   const [timer, setTimer] = useState<number>(0)
   const [width, setWidth] = useState<number>(0)
-  const [pause,setPause] = useState<boolean>(false)
   const [timeOver, setTimeOver] = useState<boolean>(false)
   const [checkTimeOver, setCheckTimeOver] = useState<string>('1000')
   // const checkWidth = (w: number, page2: number) => {
@@ -33,10 +32,10 @@ export default function PageIndicator({
   //     }
   //   }
   // }
-  const checkBreed = (w:number,page2:number)=>{
-    for (let i = 1; i < page + 1;i++){
-      if (page2 == i){
-        if (timer-timing * (page2-1)<0){
+  const checkBreed = (w: number, page2: number) => {
+    for (let i = 1; i < page + 1; i++) {
+      if (page2 == i) {
+        if (timer - timing * (page2 - 1) < 0) {
           return 0
         }
         // console.log(w)
@@ -76,30 +75,29 @@ export default function PageIndicator({
   useEffect(() => {
     console.log(timer)
     timer >= 0 && setTimeout(() => setTimer(timer + 1), 1000)
-    if (width%80 !=0 || timer==0){
+    if (width % 80 != 0 || timer == 0) {
       setWidth(width + 80 / timing)
-      setPause(true)
-    }if (timer%(timing+1) ==0){
+    }
+    if (timer % (timing + 1) == 0) {
       setWidth(width + 80 / timing)
     }
     console.log(checkTimeOver)
-  
-    
-      if (timer == page * timing+page) {
-        setTimer(0)
-      } 
-      if (timer == page * timing+page-1) {
-        setCheckTimeOver("0")
-        setTimeOver(true)
-      } 
-      if (timer == 0){
-        setWidth(80 / timing)
-        
-        setTimeOver(false)
-      }
-      if (timer == 1) {
-        setCheckTimeOver('1000')
-      }
+
+    if (timer == page * timing + page) {
+      setTimer(0)
+    }
+    if (timer == page * timing + page - 1) {
+      setCheckTimeOver('0')
+      setTimeOver(true)
+    }
+    if (timer == 0) {
+      setWidth(80 / timing)
+
+      setTimeOver(false)
+    }
+    if (timer == 1) {
+      setCheckTimeOver('1000')
+    }
   }, [timer])
   return <>{NumberOfPages()}</>
 }
