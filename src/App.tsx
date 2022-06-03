@@ -2,24 +2,19 @@ import Clock from './components/Clock'
 import ToolTip from './components/ToolTip'
 import Trailer from './components/Trailer'
 import TrailerCard from './components/TrailerCard'
-import { useEffect, useState } from 'react'
-import { fetchMovies } from './utils/fetchMovies'
+import { useState } from 'react'
 import { Movie } from './classes/Movie'
 import MovieList from './components/MovieList'
 import Logo from './components/Logo'
+import { useLocation } from 'react-router-dom'
 
 export default function App() {
+  const search = useLocation().search
+  let location = new URLSearchParams(search).get('location')?.toString()
+  /* @ts-ignore */
+  let timing = parseInt(new URLSearchParams(search).get('timing'))
+
   const [movies, setMovies] = useState<Movie[]>()
-
-  const getMovies = async () => {
-    setMovies(await fetchMovies('KBRG'))
-  }
-
-  useEffect(() => {
-    if (!movies) {
-      getMovies()
-    }
-  }, [movies])
 
   return (
     <div
@@ -34,26 +29,13 @@ export default function App() {
           <Clock />
           <ToolTip text={'Scan de QR-code, en koop tickets'} />
         </div>
-        <MovieList moviesPerPage={8} location={'KBRG'} timing={15} />
+        <MovieList
+          moviesPerPage={8}
+          location={location ? location : 'KBRG'}
+          timing={timing ? timing : 10}
+        />
       </div>
 
-      {/* LIST MET MOVIES */}
-      {/* <ul className="text-white">
-        {movies?.map((movie) => (
-          <li key={movie.id}>
-            {movie.movie.title}
-            <ul>
-              <li>Vrije stoelen: {movie.availableSeats}</li>
-            </ul>
-          </li>
-        ))}
-      </ul> */}
-
-      {/* LIST MET MOVIES */}
-      {/*<MovieCard />*/}
-      {/*<div className="flex gap-4 justify-center my-3">
-      <PageIndicator page={3} time />
-      {/*</div>*/}
       <Trailer
         video={
           'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
@@ -71,7 +53,6 @@ export default function App() {
           secondary
         />
       </Trailer>
-      {/* </div> */}
     </div>
   )
 }

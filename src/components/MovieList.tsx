@@ -25,6 +25,7 @@ export default function MovieList({
 
   const sortedMovies = async (list: Movie[]) => {
     const sorted = list.sort(
+      //@ts-ignore
       (x, y) => +new Date(x.showtime) - +new Date(y.showtime),
     )
     setMovies(sorted)
@@ -46,6 +47,7 @@ export default function MovieList({
           className="flex gap-4 flex-wrap w-screen content-start mt-3 px-6"
         >
           {movies?.slice(indexes[0], indexes[1]).map((movie) => {
+            //@ts-ignore
             return <MovieCard movie={movie} key={movie.id} />
           })}
         </div>
@@ -87,16 +89,19 @@ export default function MovieList({
       if (currentPage == pages - 1) {
         setCurrentPage(0)
         setSlide({
+          //@ts-ignore
           transition: '1s ease all',
           marginLeft: `-${currentPage + 1}00%`,
         })
         setTimeout(() => {
           if (currentPage == pages - 1) {
+            //@ts-ignore
             setSlide({ transition: '0s', marginLeft: `0%` })
           }
         }, 2000)
       } else {
         setSlide({
+          //@ts-ignore
           transition: '1s ease all',
           marginLeft: `-${currentPage + 1}00%`,
         })

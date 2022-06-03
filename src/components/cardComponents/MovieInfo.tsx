@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
-import { Movie } from '../../classes/Movie'
-import { fetchMovies } from '../../utils/fetchMovies'
+import { useState } from 'react'
 import Marquee from 'react-fast-marquee'
 import MovieTechnology from './MovieTechnology'
 import { SessionAttribute } from '../../interfaces/Movies'
@@ -16,7 +14,6 @@ export default function MovieInfo({
   version: string
   sessionAttributes: SessionAttribute[]
 }) {
-  const [movies, setMovies] = useState<Movie[]>()
   const [play, setPlay] = useState<boolean>(true)
   const ArrayToString = (genres: []) => {
     let array: [] = []
@@ -27,9 +24,6 @@ export default function MovieInfo({
   }
   function delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
-  }
-  const getMovies = async () => {
-    setMovies(await fetchMovies('KBRG'))
   }
 
   const checkTitleCharacters = () => {
@@ -58,11 +52,7 @@ export default function MovieInfo({
       )
     }
   }
-  useEffect(() => {
-    if (!movies) {
-      getMovies()
-    }
-  }, [movies])
+
   return (
     <div className="font-proxima mx-4 ">
       {checkTitleCharacters()}
