@@ -12,15 +12,15 @@ export default function MovieTechnology({
       {
         sessionAttributes?.map((attribute) => attribute.shortName != 'Pauze' && attribute.shortName != 'Familie' ? (
           attribute.shortName == 'LaserUltra' ? 
-            <>
-              <div className="bg-white rounded-full w-6 h-6 " key={attribute.id}>
+            <div key={attribute.id}>
+              <div className="bg-white rounded-full w-6 h-6 ">
                 <img
                   src={`${baseURL}${attribute.imageUrl}`}
                   alt={attribute.shortName}
                 />
               </div>
               <div className="bg-alpha-xxx-light opacity-40 dark:bg-gray-xx-light dark:opacity-100 w-[2px] rounded-sm h-4"></div>
-            </>
+            </div>
           :
             <div className="bg-white rounded-full w-6 h-6 " key={attribute.id}>
               <img
