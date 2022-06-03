@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 import MovieTechnology from './MovieTechnology'
 import { SessionAttribute } from '../../interfaces/Movies'
@@ -14,7 +14,7 @@ export default function MovieInfo({
   version: string
   sessionAttributes: SessionAttribute[]
 }) {
-  const [play, setPlay] = useState<boolean>(true)
+  const [play, setPlay] = useState<boolean>(false)
   const ArrayToString = (genres: []) => {
     let array: [] = []
     for (let i in genres) {
@@ -23,9 +23,8 @@ export default function MovieInfo({
     return array
   }
   function delay(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms))
-  }
-
+    return new Promise( resolve => setTimeout(resolve, ms) );
+}
   const checkTitleCharacters = () => {
     if (title.length > 25) {
       return (
@@ -52,6 +51,13 @@ export default function MovieInfo({
       )
     }
   }
+  const start = async()=>{
+    await delay(1500)
+    setPlay(true)
+  }
+  useEffect(()=>{
+    start()
+  })
 
   return (
     <div className="font-proxima mx-4 ">
