@@ -9,7 +9,9 @@ export default function MovieSeats({
     <div className="flex items-center font-proxima mt-[2px]">
       <p
         className={`text-2xl mb-1 font-bold ${
-          lastTickets == true ? 'text-warning' : 'text-good'
+          lastTickets == true
+            ? 'dark:text-warning text-error'
+            : 'dark:text-good text-[#05b300]'
         }`}
       >
         {availableSeats}

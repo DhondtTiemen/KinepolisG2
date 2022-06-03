@@ -1,12 +1,13 @@
 export default function ToolTip({ text }: { text: string }) {
+  let splittedText: String[] = []
+  splittedText = text.split(',', 2)
+  console.log(splittedText)
   return (
-    <div className="w-36 rounded-2xl py-1.5 px-3.5 bg-alpha-x-light dark:bg-alpha-xx-light">
-      <h1 className="font-proxima font-bold uppercase text-sm text-white text-center">
-        {text}
-      </h1>
-      <div className="w-7 overflow-hidden absolute mt-1.45 ml-16">
-        <div className=" h-5 w-5 -rotate-45 transform origin-top-left bg-alpha-x-light dark:bg-alpha-xx-light"></div>
-      </div>
+    <div className="w-[22%] uppercase font-proxima font-bold flex flex-wrap justify-end py-1.5 ">
+      <p className="  text-sm  dark:text-warning text-error text-center">
+        {splittedText[0]}
+      </p>
+      <p className="dark:text-white text-black text-xs">{splittedText[1]}</p>
     </div>
   )
 }
