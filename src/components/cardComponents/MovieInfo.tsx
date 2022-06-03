@@ -22,16 +22,10 @@ export default function MovieInfo({
     return array
   }
   function delay(ms: number) {
-    console.log('dealy')
     return new Promise( resolve => setTimeout(resolve, ms) );
 }
   const getMovies = async () => {
     setMovies(await fetchMovies('KBRG'))
-  }
-  const checkPlay=async()=>{
-    setPlay(false)
-    await delay(1000)
-    setPlay(true)
   }
   
   const checkTitleCharacters=()=>{
@@ -40,7 +34,12 @@ export default function MovieInfo({
         <Marquee 
           className="text-2xl w-[270px] text-alpha-x-light  dark:text-white font-bold"
           gradient={false}
-          onCycleComplete={()=>checkPlay()}
+          onCycleComplete={async()=>{
+            
+            setPlay(false)
+            await delay(1000)
+            setPlay(true)
+          }}
           play={play}
           speed={40}
           >
