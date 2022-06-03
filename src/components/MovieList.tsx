@@ -83,22 +83,23 @@ export default function MovieList({
 
   useEffect(() => {
     setTimeout(() => {
-      if (currentPage == pages + 1) {
+      if (currentPage == pages - 1) {
         setCurrentPage(0)
         setSlide({
           transition: '1s ease all',
           marginLeft: `-${currentPage + 1}00%`,
         })
-        /*setTimeout(() => {
-          setSlide({ transition: '0s', marginLeft: `0%` })
-        }, 1000)*/
+        setTimeout(() => {
+          if (currentPage == pages - 1) {
+            setSlide({ transition: '0s', marginLeft: `0%` })
+          }
+        }, 2000)
       } else {
         setSlide({
           transition: '1s ease all',
           marginLeft: `-${currentPage + 1}00%`,
         })
         setCurrentPage(currentPage + 1)
-        //style={{ width: checkWidth(width, i + 1), maxWidth: 80 }}
       }
     }, timing * 1000)
   }, [currentPage])
