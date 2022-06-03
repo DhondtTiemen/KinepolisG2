@@ -34,7 +34,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           : movie.lastTickets == true
           ? 'dark:border-warning border-error border-[3px]'
           : 'border-none'
-      }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light  dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
+      }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
     >
       <div className="flex h-[61%]">
         <div className="w-[35%]">

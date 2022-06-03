@@ -17,6 +17,7 @@ export default function MovieList({
   const [lists, setLists] = useState<JSX.Element[]>()
   const [pages, setPages] = useState<number>(0)
   const [currentPage, setCurrentPage] = useState<number>(0)
+  const [slide, setSlide] = useState()
 
   const sortedMovies = async (list: Movie[]) => {
     const sorted = list.sort(
@@ -25,7 +26,6 @@ export default function MovieList({
     setMovies(sorted)
 
     setPages(Math.ceil(list.length / moviesPerPage))
-
     return sorted
     //console.log(list)
   }
@@ -41,7 +41,7 @@ export default function MovieList({
       const element = (
         <div
           key={index}
-          className="flex gap-4 flex-wrap mx-6 mt-4 w-screen content-start"
+          className="flex gap-4 flex-wrap w-screen content-start px-6"
         >
           {movies?.slice(indexes[0], indexes[1]).map((movie) => {
             return <MovieCard movie={movie} key={movie.id} />
@@ -83,17 +83,31 @@ export default function MovieList({
 
   useEffect(() => {
     setTimeout(() => {
-      if (currentPage == pages - 1) {
+      if (currentPage == pages + 1) {
         setCurrentPage(0)
+        setSlide({
+          transition: '1s ease all',
+          marginLeft: `-${currentPage + 1}00%`,
+        })
+        /*setTimeout(() => {
+          setSlide({ transition: '0s', marginLeft: `0%` })
+        }, 1000)*/
       } else {
+        setSlide({
+          transition: '1s ease all',
+          marginLeft: `-${currentPage + 1}00%`,
+        })
         setCurrentPage(currentPage + 1)
+        //style={{ width: checkWidth(width, i + 1), maxWidth: 80 }}
       }
     }, timing * 1000)
   }, [currentPage])
 
   return (
     <div className="flex flex-col justify-between h-[93%]">
-      <div className={`flex flex-row w-[500vw] duration-1000`}>{lists}</div>
+      <div className={`test flex flex-row w-fit`} style={slide}>
+        {lists}
+      </div>
       <div className="flex gap-4 justify-center my-3 mb-[20px]">
         <PageIndicator page={pages} timing={timing} />
       </div>
