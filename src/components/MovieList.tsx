@@ -4,6 +4,10 @@ import { fetchMovies } from '../utils/fetchMovies'
 import { Movie } from '../classes/Movie'
 import MovieCard from './cardComponents/MovieCard'
 
+// TODO: enkel films tonen die in de komende X aantal uur gespeeld worden
+// TODO: films tonen X aantal minuten nadat ze gestart zijn (voor de laatkomers)
+// TODO: Wat meer ruimte boven de movielist? de list hangt precies wat aan de bovenkant
+
 export default function MovieList({
   moviesPerPage,
   location,
@@ -27,13 +31,11 @@ export default function MovieList({
 
     setPages(Math.ceil(list.length / moviesPerPage))
     return sorted
-    //console.log(list)
   }
 
   const createLists = async () => {
     const tempLists: JSX.Element[] = []
     for (let index = 0; index < pages + 1; index++) {
-      console.log(index)
       let indexes = getIndexes(index)
       if (index == 5) {
         indexes = [0, moviesPerPage]
@@ -41,7 +43,7 @@ export default function MovieList({
       const element = (
         <div
           key={index}
-          className="flex gap-4 flex-wrap w-screen content-start px-6"
+          className="flex gap-4 flex-wrap w-screen content-start mt-3 px-6"
         >
           {movies?.slice(indexes[0], indexes[1]).map((movie) => {
             return <MovieCard movie={movie} key={movie.id} />
@@ -67,7 +69,6 @@ export default function MovieList({
       beginList = pages - list == 0 ? 0 : moviesPerPage * list
       endList = pages - list == 0 ? moviesPerPage : (list + 1) * moviesPerPage
     }
-    console.log([beginList, endList])
     return [beginList, endList]
   }
 
@@ -101,11 +102,11 @@ export default function MovieList({
         })
         setCurrentPage(currentPage + 1)
       }
-    }, timing * 1000+1000)
+    }, timing * 1000 + 1000)
   }, [currentPage])
 
   return (
-    <div className="flex flex-col justify-between h-[93%]">
+    <div className="flex flex-col justify-between h-[93%] overflow-x-hidden">
       <div className={`test flex flex-row w-fit`} style={slide}>
         {lists}
       </div>

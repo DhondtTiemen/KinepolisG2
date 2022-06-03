@@ -5,6 +5,8 @@ export default function MovieSeats({
   lastTickets: boolean
   availableSeats: number
 }) {
+  // TODO: Beschikbare stoelen en icoontje wat kleiner? -> wat denken jullie?
+
   return (
     <div className="flex items-center font-proxima mt-[2px]">
       <p

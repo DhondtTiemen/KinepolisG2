@@ -46,6 +46,7 @@ export default function MovieInfo({
           play={play}
           speed={40}
         >
+          {/* TODO: Titel de volledige breedte van het kaartje laten innemen?  */}
           <p className="pr-[50px]">{title}</p>
         </Marquee>
       )
@@ -69,6 +70,7 @@ export default function MovieInfo({
         {version}
       </p>
       <div className="flex items-end justify-between w-full -mt-2">
+        {/* TODO: Genre wat groter en mss klein beetje vetter? -> Leesbaarheid */}
         <p className="text-[11px] text-error dark:text-warning  ">
           {ArrayToString(genre).toString().replace(',', ' | ')}
         </p>

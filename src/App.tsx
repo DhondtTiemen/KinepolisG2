@@ -23,6 +23,7 @@ export default function App() {
 
   return (
     <div
+      // TODO: light mode donkerder maken?
       className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light "
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
     >
