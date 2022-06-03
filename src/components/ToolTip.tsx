@@ -7,7 +7,9 @@ export default function ToolTip({ text }: { text: string }) {
       <p className="  text-sm  dark:text-warning text-error text-center">
         {splittedText[0]}
       </p>
-      <p className="dark:text-white text-black text-xs">{splittedText[1]}</p>
+      <p className="dark:text-white text-alpha-x-light text-xs">
+        {splittedText[1]}
+      </p>
     </div>
   )
 }
