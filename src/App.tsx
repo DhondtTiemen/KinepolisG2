@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { fetchMovies } from './utils/fetchMovies'
 import { Movie } from './classes/Movie'
 import MovieList from './components/MovieList'
+import Logo from './components/Logo'
 
 export default function App() {
   const [movies, setMovies] = useState<Movie[]>()
@@ -28,8 +29,9 @@ export default function App() {
       {/* <div className="flex flex-col justify-between h-screen dark:bg-black dark:bg-opacity-70  backdrop-blur-xl"> */}
       <div className="h-2/3">
         <div className="flex justify-between items-center mx-6 pt-4">
+          <Logo />
           <Clock />
-          <ToolTip text={'Scan hier en koop je tickets'} />
+          <ToolTip text={'Scan de QR-code, en koop tickets'} />
         </div>
         <MovieList moviesPerPage={8} location={'KBRG'} timing={10} />
       </div>
