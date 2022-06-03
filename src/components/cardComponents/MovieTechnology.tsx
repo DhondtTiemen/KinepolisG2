@@ -9,17 +9,61 @@ export default function MovieTechnology({
 
   return (
     <div className="flex gap-2 items-center">
-      {sessionAttributes?.map((attribute) => (
-        <div className="bg-white rounded-full w-6 h-6 " key={attribute.id}>
-          <img
-            src={`${baseURL}${attribute.imageUrl}`}
-            alt={attribute.shortName}
-          />
-        </div>
-      ))}
+      {sessionAttributes?.map((attribute) =>
+        attribute.shortName != 'Pauze' && attribute.shortName != 'Familie' ? (
+          attribute.shortName == 'LaserUltra' || attribute.shortName == '3D' ? (
+            <div key={attribute.id} className="flex items-center">
+              <div className="bg-white rounded-full w-6 h-6 mr-2">
+                <img
+                  src={`${baseURL}${attribute.imageUrl}`}
+                  alt={attribute.shortName}
+                />
+              </div>
+              <div className="bg-alpha-xxx-light opacity-40 dark:bg-gray-xx-light dark:opacity-100 w-[2px] rounded-sm h-5"></div>
+            </div>
+          ) : (
+            <div className="bg-white rounded-full w-6 h-6 " key={attribute.id}>
+              <img
+                src={`${baseURL}${attribute.imageUrl}`}
+                alt={attribute.shortName}
+              />
+            </div>
+          )
+        ) : (
+          ''
+        ),
+      )}
     </div>
   )
 }
+
+// {sessionAttributes?.map((attribute) => {
+//   if (attribute.shortName == 'Pauze') {
+//     console.log('Pauze')
+//     return (
+//         <div className="bg-alpha rounded-full w-6 h-6 " key={attribute.id}>
+//           <img
+//             src={`${baseURL}${attribute.imageUrl}`}
+//             alt={attribute.shortName}
+//           />
+//         </div>
+//     )
+//   }
+//   else {
+//     console.log('Geen pauze')
+//     return (
+
+//       <div className="bg-white rounded-full w-6 h-6 " key={attribute.id}>
+//         <img
+//           src={`${baseURL}${attribute.imageUrl}`}
+//           alt={attribute.shortName}
+//         />
+//       </div>
+
+//     )
+//   }
+// }
+// )}
 
 // {
 //   sessionAttributes.map((session) => (
