@@ -72,7 +72,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               bgColor="transparent"
               fgColor={darkMode ? 'white' : '#004680'}
               size={65}
-              value="https://www.kinepolis.com"
+              value={`https://kinepolis.be/nl/direct-vista-redirect/${movie.vistaSessionId}/F/METRO/0/0/0/0?s=98c3b013b27643558745678ad45f4a00`}
             />
             <MovieSeats
               lastTickets={movie.lastTickets}
