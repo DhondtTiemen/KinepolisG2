@@ -33,7 +33,7 @@ export default function App() {
           <Clock />
           <ToolTip text={'Scan de QR-code, en koop tickets'} />
         </div>
-        <MovieList moviesPerPage={8} location={'KBRG'} timing={10} />
+        <MovieList moviesPerPage={8} location={'KBRG'} timing={15} />
       </div>
 
       {/* LIST MET MOVIES */}
