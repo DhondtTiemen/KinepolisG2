@@ -38,11 +38,11 @@ export default function MovieList({
   useEffect(() => {
     setTimeout(() => {
       if (currentPage == pages - 1) {
-        setCurrentPage(0)
+          setCurrentPage(0)
       } else {
         setCurrentPage(currentPage + 1)
       }
-    }, timing * 1000)
+    }, timing * 1000+1000)
   }, [currentPage])
 
   return (

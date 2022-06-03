@@ -21,23 +21,36 @@ export default function PageIndicator({
   const [timer, setTimer] = useState<number>(0)
   const [width, setWidth] = useState<number>(0)
   const [timeOver, setTimeOver] = useState<boolean>(false)
-  const checkWidth = (w: number, page2: number) => {
+  const [checkTimeOver, setCheckTimeOver] = useState<string>('1000')
+  // const checkWidth = (w: number, page2: number) => {
+  //   for (let i = 1; i < page + 1; i++) {
+  //     if (page2 == i) {
+  //       if (w - 80 * (page2 - 1) < 0) {
+  //         return 0
+  //       }
+  //       return w - 80 * (page2 - 1)
+  //     }
+  //   }
+  // }
+  const checkBreed = (w: number, page2: number) => {
     for (let i = 1; i < page + 1; i++) {
       if (page2 == i) {
-        if (w - 80 * (page2 - 1) < 0) {
+        if (timer - timing * (page2 - 1) < 0) {
           return 0
         }
+        // console.log(w)
         return w - 80 * (page2 - 1)
       }
     }
   }
-  const checkTimeOver = () => {
-    if (timeOver == false) {
-      return 'opacity-1'
-    } else {
-      return 'opacity-0'
-    }
-  }
+
+  // const checkTimeOver = () => {
+  //   if (timer!=23) {
+  //     return 'opacity-1'
+  //   } else {
+  //     return 'opacity-0'
+  //   }
+  // }
   const NumberOfPages = () => {
     const code: JSX.Element[] = []
     for (let i = 0; i < page; i++) {
@@ -46,12 +59,12 @@ export default function PageIndicator({
           key={i}
           className="rounded-full w-20 h-3 bg-gray-xx-light dark:bg-alpha-x"
         >
-          <div className={`${checkTimeOver()}`}>
-            <div
-              style={{ width: checkWidth(width, i + 1), maxWidth: 80 }}
-              className={`dark:bg-warning bg-error rounded-full h-3 ease-linear duration-1000`}
-            ></div>
-          </div>
+          {/* <div className={`${checkTimeOver()}`}> */}
+          <div
+            style={{ width: checkBreed(width, i + 1), maxWidth: 80 }}
+            className={` dark:bg-warning bg-error rounded-full h-3 ease-linear duration-${checkTimeOver} `}
+          ></div>
+          {/* </div> */}
         </div>,
       )
     }
@@ -60,16 +73,30 @@ export default function PageIndicator({
   }
 
   useEffect(() => {
+    console.log(timer)
     timer >= 0 && setTimeout(() => setTimer(timer + 1), 1000)
-    // console.log(timer)
-    setWidth(width + 8)
-    if (timer > page * timing) {
-      setTimeOver(true)
+    if (width % 80 != 0 || timer == 0) {
+      setWidth(width + 80 / timing)
+    }
+    if (timer % (timing + 1) == 0) {
+      setWidth(width + 80 / timing)
+    }
+    console.log(checkTimeOver)
+
+    if (timer == page * timing + page) {
       setTimer(0)
-      setWidth(0)
+    }
+    if (timer == page * timing + page - 1) {
+      setCheckTimeOver('0')
+      setTimeOver(true)
+    }
+    if (timer == 0) {
+      setWidth(80 / timing)
+
+      setTimeOver(false)
     }
     if (timer == 1) {
-      setTimeOver(false)
+      setCheckTimeOver('1000')
     }
   }, [timer])
   return <>{NumberOfPages()}</>
