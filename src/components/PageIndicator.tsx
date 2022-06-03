@@ -74,8 +74,10 @@ export default function PageIndicator({
 
   useEffect(() => {
     timer >= 0 && setTimeout(() => setTimer(timer + 1), 1000)
-    if (width % 80 != 0 || timer == 0) {
-      setWidth(width + 80 / timing)
+    console.log(timer)
+    console.log(Math.round(width))
+    if (Math.round(width) % 80 != 0 || timer == 0) {
+      setWidth((width + 80 / timing))
     }
     if (timer % (timing + 1) == 0) {
       setWidth(width + 80 / timing)
