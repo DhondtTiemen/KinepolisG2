@@ -26,16 +26,19 @@ module.exports = {
       transparant: 'rgba(0,0,0,0)',
     },
     extend: {
+      animation: {
+        marquee: 'marquee 10s linear infinite',
+      },
       backgroundImage: {
         bg: "url('https://images.unsplash.com/photo-1579547621244-c07e55dcb856?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=639&q=80')",
         'bg-light':
           "url('https://images.unsplash.com/photo-1556139943-4bdca53adf1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
       },
       keyframes: {
-        move: {
-          '0%': { transform: 'translate(0,0)' },
-          '100%': { transform: 'translate(-100%,0)' },
-        },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-100%)' },
+        }
       },
     },
   },
