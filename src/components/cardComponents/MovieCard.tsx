@@ -34,7 +34,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           : movie.lastTickets == true
           ? 'dark:border-warning border-error border-[3px]'
           : 'border-none'
-      }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light  dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
+      }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
     >
       <div className="flex h-[61%]">
         <div className="w-[35%]">
@@ -72,7 +72,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               bgColor="transparent"
               fgColor={darkMode ? 'white' : '#004680'}
               size={65}
-              value="https://www.kinepolis.com"
+              value={`https://kinepolis.be/nl/direct-vista-redirect/${movie.vistaSessionId}/F/METRO/0/0/0/0?s=98c3b013b27643558745678ad45f4a00`}
             />
             <MovieSeats
               lastTickets={movie.lastTickets}
