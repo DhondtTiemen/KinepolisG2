@@ -23,6 +23,31 @@ export default function MovieList({
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [slide, setSlide] = useState()
 
+  //Get Time
+  let today = new Date()
+  let currentTime = today.getHours() + ':' + today.getMinutes()
+  console.log('Currenttime: ' + currentTime)
+
+  let checkTime = today.getHours() + 2 + ':' + today.getMinutes()
+  // console.log('Checktime: ' + checkTime)
+
+  // const movieTime = movie.showtime.substring(11, 16)
+  // console.log('Movietime: ' + movieTime)
+
+  // //Function for time
+  // if (currentTime >= movieTime) {
+  //   console.log('Gedaan')
+  // }
+  // else {
+  //   console.log('Moet nog beginnen')
+  //   if (checkTime >= movieTime) {
+  //     console.log('Start binnenkort')
+  //   }
+  //   else {
+  //     console.log('Is vanavond pas...')
+  //   }
+  // }
+
   const sortedMovies = async (list: Movie[]) => {
     const sorted = list.sort(
       //@ts-ignore
