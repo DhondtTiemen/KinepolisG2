@@ -23,8 +23,8 @@ export default function MovieInfo({
     return array
   }
   function delay(ms: number) {
-    return new Promise( resolve => setTimeout(resolve, ms) );
-}
+    return new Promise((resolve) => setTimeout(resolve, ms))
+  }
   const checkTitleCharacters = () => {
     if (title.length > 25) {
       return (
@@ -51,11 +51,11 @@ export default function MovieInfo({
       )
     }
   }
-  const start = async()=>{
+  const start = async () => {
     await delay(1500)
     setPlay(true)
   }
-  useEffect(()=>{
+  useEffect(() => {
     start()
   })
 

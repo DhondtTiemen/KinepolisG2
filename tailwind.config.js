@@ -10,14 +10,14 @@ module.exports = {
 
       'gray-x-dark': '#6E7474',
       gray: '#C9C9C9',
-      'gray-x-light': '#F1F5F6',
+      'gray-x-light': '#EAEFF1',
       'gray-xx-light': '#e5e9ea',
 
       alpha: '#1B243F',
       'alpha-x': '#313a55',
       'alpha-x-light': '#004680',
       'alpha-xx-light': '#00AAD7',
-      'alpha-xxx-light': '#7EA2C0',
+      'alpha-xxx-light': '#5d7b94',
 
       error: '#FF4F2E',
       warning: '#FAB233',
