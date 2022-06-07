@@ -18,13 +18,13 @@ export const fetchMovies = async (location: string) => {
         //Get Time
         let today = new Date()
         let currentTime = today.getHours() + ':' + today.getMinutes()
-        console.log('Currenttime: ' + currentTime)
+        // console.log('Currenttime: ' + currentTime)
 
         let checkTime = today.getHours() + 6 + ':' + today.getMinutes()
-        console.log('Checktime: ' + checkTime)
+        // console.log('Checktime: ' + checkTime)
 
         const movieTime = session.showtime.toString().substring(11, 16)
-        console.log('Movietime: ' + movieTime)
+        // console.log('Movietime: ' + movieTime)
 
         // //Function for time
         // if (currentTime >= movieTime) {
@@ -41,7 +41,7 @@ export const fetchMovies = async (location: string) => {
         // }
 
         if (currentTime <= movieTime) {
-          console.log('Moet nog beginnen')
+          // console.log('Moet nog beginnen')
           if (checkTime >= movieTime) {
             // Session in MovieObject plaatsen
             const movieObject = new Movie(session)
