@@ -26,7 +26,7 @@ export default function MovieList({
   //Get Time
   let today = new Date()
   let currentTime = today.getHours() + ':' + today.getMinutes()
-  console.log('Currenttime: ' + currentTime)
+  // console.log('Currenttime: ' + currentTime)
 
   let checkTime = today.getHours() + 2 + ':' + today.getMinutes()
   // console.log('Checktime: ' + checkTime)
