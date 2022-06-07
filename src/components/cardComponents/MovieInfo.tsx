@@ -66,7 +66,6 @@ export default function MovieInfo({
         {version}
       </p>
       <div className="flex items-end justify-between w-full -mt-2">
-        {/* TODO: Genre wat groter en mss klein beetje vetter? -> Leesbaarheid */}
         <p className="text-[11px] text-error dark:text-warning  ">
           {ArrayToString(genre).toString().replace(',', ' | ')}
         </p>
