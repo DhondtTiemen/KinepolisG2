@@ -13,6 +13,8 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
+  const [label, setLabel] = useState<boolean>(false)
+  const [labelType, setLabelType] = useState<string>('')
 
   useEffect(() => {
     window
@@ -26,14 +28,32 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     }
   }, [])
 
+  const setLabels = async () => {
+    if (movie.popular == true || movie.lastTickets == true) {
+      if (movie.popular == true) {
+        setLabel(true)
+        setLabelType('popular')
+      } else {
+        setLabel(true)
+        setLabelType('last tickets')
+      }
+    } else {
+      setLabel(false)
+      setLabelType('')
+    }
+  }
+  useEffect(() => {
+    setLabels()
+  }, [labelType])
+
   return (
     <div
       className={`${
-        movie.popular == true
+        label == false
+          ? 'border-none'
+          : labelType == 'popular'
           ? 'dark:border-alpha-xx-light border-alpha-x-light border-[3px]'
-          : movie.lastTickets == true
-          ? 'dark:border-warning border-error border-[3px]'
-          : 'border-none'
+          : 'dark:border-warning border-error border-[3px]'
       }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
     >
       <div className="flex h-[61%]">
@@ -49,23 +69,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
           />
         </div>
         <div className=" justify-end">
-          <MovieLabel
-            text={`${
-              movie.popular == true
-                ? 'POPULAR'
-                : movie.lastTickets == true
-                ? 'LAST TICKETS'
-                : ''
-            }`}
-            visible={
-              movie.popular == true
-                ? true
-                : movie.lastTickets == true
-                ? true
-                : false
-            }
-            type={`${movie.popular == true ? 'popular' : 'lasttickets'}`}
-          />
+          <MovieLabel text={labelType} visible={label} type={labelType} />
 
           <div className="flex flex-wrap justify-end mr-4 mt-4">
             <QRCodeSVG

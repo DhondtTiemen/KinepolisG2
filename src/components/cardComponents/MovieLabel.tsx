@@ -8,7 +8,7 @@ export default function MovieLabel({
   visible: boolean
 }) {
   if (visible == false) {
-    return
+    return <div></div>
   } else {
     return (
       <div className="flex justify-end mr-4 -mb-2">
