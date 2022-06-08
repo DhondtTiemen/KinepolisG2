@@ -47,12 +47,15 @@ export const fetchMovies = async (location: string) => {
             const movieObject = new Movie(session)
     
             // Film koppelen aan MovieObject
+            // @ts-ignore
             movieObject.movie = movieData.films.find(
               (item: IMovie) => item.id == session.film.id,
             )
     
             // Berekenen of lastTickets == true
+            // @ts-ignore
             if ((movieObject.maxSeats / 100) * 15 > movieObject.availableSeats) {
+              // @ts-ignore
               movieObject.lastTickets = true
             }
     
