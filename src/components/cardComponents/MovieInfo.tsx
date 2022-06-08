@@ -33,7 +33,7 @@ export default function MovieInfo({
     if (title.length > 30) {
       return (
         <Marquee
-          className="text-2xl  text-alpha-x-light  dark:text-white font-bold"
+          className="text-2xl overflow-hidden text-alpha-x-light  dark:text-white font-bold"
           gradient={false}
           onCycleComplete={async () => {
             setSpeed(0)
