@@ -120,7 +120,7 @@ export default function MovieList({
           })
           setCurrentPage(currentPage + 1)
         }
-      }, timing * 1000 + 1000)
+      }, timing * 1000)
     }
   }, [currentPage, pages])
 
