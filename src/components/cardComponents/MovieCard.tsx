@@ -103,6 +103,8 @@ export default function MovieCard({ movie }: { movie: Movie }) {
         //@ts-ignore
         version={movie.movie.spokenLanguage.name}
         //@ts-ignore
+        format={movie.film.format}
+        //@ts-ignore
         sessionAttributes={movie.sessionAttributes}
       />
     </div>
