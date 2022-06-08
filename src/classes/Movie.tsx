@@ -56,8 +56,4 @@ export class Movie {
       popular,
     })
   }
-
-  render() {
-    return <h1>{this.movie.title}</h1>
-  }
 }
