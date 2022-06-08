@@ -18,6 +18,7 @@ export default function MovieInfo({
   const ArrayToString = (genres: []) => {
     let array: [] = []
     for (let i in genres) {
+      //@ts-ignore
       array.push(genres[i].name)
     }
     return array
