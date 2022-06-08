@@ -1,0 +1,96 @@
+import { QRCodeSVG } from 'qrcode.react'
+import { useEffect, useState } from 'react'
+import MovieCover from './MovieCover'
+import MovieInfo from './MovieInfo'
+import MovieSeats from './MovieSeats'
+import MovieTechnology from './MovieTechnology'
+import MovieTimeInfo from './MovieTimeInfo'
+import PageIndicator from '../PageIndicator'
+import MovieLabel from './MovieLabel'
+import { Movie } from '../../classes/Movie'
+
+export default function MovieCard({ movie }: { movie: Movie }) {
+  const [darkMode, setDarkMode] = useState<boolean>(
+    window.matchMedia('(prefers-color-scheme: dark)').matches,
+  )
+  const [label, setLabel] = useState<boolean>(false)
+  const [labelType, setLabelType] = useState<string>('')
+
+  useEffect(() => {
+    window
+      .matchMedia('(prefers-color-scheme: dark)')
+      .addEventListener('change', (e) => setDarkMode(e.matches))
+    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
+    return () => {
+      window
+        .matchMedia('(prefers-color-scheme: dark)')
+        .removeEventListener('change', () => {})
+    }
+  }, [])
+
+  const setLabels = async () => {
+    if (movie.popular == true || movie.lastTickets == true) {
+      if (movie.popular == true) {
+        setLabel(true)
+        setLabelType('popular')
+      } else {
+        setLabel(true)
+        setLabelType('last tickets')
+      }
+    } else {
+      setLabel(false)
+      setLabelType('')
+    }
+  }
+  useEffect(() => {
+    setLabels()
+  }, [labelType])
+
+  return (
+    <div
+      className={`${
+        label == false
+          ? 'border-none'
+          : labelType == 'popular'
+          ? 'dark:border-alpha-xx-light border-alpha-x-light border-[3px]'
+          : 'dark:border-warning border-error border-[3px]'
+      }   bg-white dark:shadow-none shadow-md shadow-gray-xx-light dark:bg-alpha-x w-[383px] h-[196px] rounded-2xl overflow-hidden`}
+    >
+      <div className="flex h-[61%]">
+        <div className="w-[35%]">
+          <MovieCover images={movie.movie.images} />
+        </div>
+        <div className="w-2/4 mt-4">
+          <MovieTimeInfo
+            movieTime={movie.showtime}
+            movieHall={movie.hall}
+            cosy={movie.hasCosySeating}
+            special={movie.hasSpecialSeating}
+          />
+        </div>
+        <div className=" justify-end">
+          <MovieLabel text={labelType} visible={label} type={labelType} />
+
+          <div className="flex flex-wrap justify-end mr-4 mt-4">
+            <QRCodeSVG
+              bgColor="transparent"
+              fgColor={darkMode ? 'white' : '#004680'}
+              size={65}
+              value={`https://kinepolis.be/nl/goto-checkout-gate/${movie.vistaSessionId}/KBRG`}
+            />
+            <MovieSeats
+              lastTickets={movie.lastTickets}
+              availableSeats={movie.availableSeats}
+            />
+          </div>
+        </div>
+      </div>
+      <MovieInfo
+        title={movie.movie.title}
+        genre={movie.movie.genres}
+        version={movie.movie.spokenLanguage.name}
+        sessionAttributes={movie.sessionAttributes}
+      />
+    </div>
+  )
+}
