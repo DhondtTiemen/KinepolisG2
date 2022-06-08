@@ -14,7 +14,7 @@ export default function MovieInfo({
   version: string
   sessionAttributes: SessionAttribute[]
 }) {
-  const [play, setPlay] = useState<boolean>(false)
+  const [speed, setSpeed] = useState<number>(0)
   const ArrayToString = (genres: []) => {
     let array: [] = []
     for (let i in genres) {
@@ -27,11 +27,6 @@ export default function MovieInfo({
     return new Promise((resolve) => setTimeout(resolve, ms))
   }
 
-  const checkPause = ()=>{
-    if (!play){
-      return false
-    }
-  }
   const checkTitleCharacters = () => {
     if (title.length > 30) {
       return (
@@ -39,12 +34,11 @@ export default function MovieInfo({
           className="text-2xl  text-alpha-x-light  dark:text-white font-bold"
           gradient={false}
           onCycleComplete={async () => {
-            setPlay(false)
+            setSpeed(0)
             await delay(1000)
-            setPlay(true)
+            setSpeed(40)
           }}
-          play={checkPause()}
-          speed={70}
+          speed={speed}
         >
           {/* TODO: Titel de volledige breedte van het kaartje laten innemen?  */}
           <p className="pr-[50px]">{title}</p>
@@ -60,7 +54,7 @@ export default function MovieInfo({
   }
   const start = async () => {
     await delay(1500)
-    setPlay(true)
+    setSpeed(40)
   }
   useEffect(() => {
     start()
