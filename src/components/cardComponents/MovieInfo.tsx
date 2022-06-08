@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 import MovieTechnology from './MovieTechnology'
-import { SessionAttribute } from '../../interfaces/Movies'
+import { SessionAttribute } from '../../interfaces/Movies' 
 
 export default function MovieInfo({
   title,
@@ -26,6 +26,14 @@ export default function MovieInfo({
   function delay(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms))
   }
+
+  const checkPause = ()=>{
+    if (play){
+      return true
+    }else{
+      return false
+    }
+  }
   const checkTitleCharacters = () => {
     if (title.length > 30) {
       return (
@@ -37,7 +45,7 @@ export default function MovieInfo({
             await delay(1000)
             setPlay(true)
           }}
-          play={play}
+          play={checkPause()}
           speed={40}
         >
           {/* TODO: Titel de volledige breedte van het kaartje laten innemen?  */}
