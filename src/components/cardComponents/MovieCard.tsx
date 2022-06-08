@@ -29,7 +29,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   }, [])
 
   const setLabels = async () => {
+    //@ts-ignore
     if (movie.popular == true || movie.lastTickets == true) {
+      //@ts-ignore
       if (movie.popular == true) {
         setLabel(true)
         setLabelType('popular')
@@ -58,13 +60,18 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     >
       <div className="flex h-[61%]">
         <div className="w-[35%]">
+          {/*@ts-ignore*/}
           <MovieCover images={movie.movie.images} />
         </div>
         <div className="w-2/4 mt-4">
           <MovieTimeInfo
+            //@ts-ignore
             movieTime={movie.showtime}
+            //@ts-ignore
             movieHall={movie.hall}
+            //@ts-ignore
             cosy={movie.hasCosySeating}
+            //@ts-ignore
             special={movie.hasSpecialSeating}
           />
         </div>
@@ -76,19 +83,26 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               bgColor="transparent"
               fgColor={darkMode ? 'white' : '#004680'}
               size={65}
+              //@ts-ignore
               value={`https://kinepolis.be/nl/goto-checkout-gate/${movie.vistaSessionId}/KBRG`}
             />
             <MovieSeats
+              //@ts-ignore
               lastTickets={movie.lastTickets}
+              //@ts-ignore
               availableSeats={movie.availableSeats}
             />
           </div>
         </div>
       </div>
       <MovieInfo
+        //@ts-ignore
         title={movie.movie.title}
+        //@ts-ignore
         genre={movie.movie.genres}
+        //@ts-ignore
         version={movie.movie.spokenLanguage.name}
+        //@ts-ignore
         sessionAttributes={movie.sessionAttributes}
       />
     </div>
