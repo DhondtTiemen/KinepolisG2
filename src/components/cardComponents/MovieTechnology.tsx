@@ -6,7 +6,6 @@ export default function MovieTechnology({
   sessionAttributes: SessionAttribute[]
 }) {
   const baseURL = 'https://cdn.kinepolis.be/images'
-  console.log(sessionAttributes)
 
   if (sessionAttributes == undefined) {
     return <div className="h-6 w-6"></div>
