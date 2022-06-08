@@ -30,7 +30,7 @@ export default function App() {
         </div>
         <MovieList
           moviesPerPage={8}
-          location={location ? location : 'KBRG'}
+          location={location ? location : 'KLUIK'}
           timing={timing ? timing : 10}
         />
       </div>

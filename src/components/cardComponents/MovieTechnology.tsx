@@ -1,4 +1,4 @@
-import { SessionAttribute } from '../../interfaces/Movies'
+import { Format, SessionAttribute } from '../../interfaces/Movies'
 
 export default function MovieTechnology({
   sessionAttributes,
@@ -10,8 +10,8 @@ export default function MovieTechnology({
   return (
     <div className="flex gap-2 items-center">
       {sessionAttributes?.map((attribute) =>
-        attribute.shortName != 'Pauze' && attribute.shortName != 'Familie' ? (
-          attribute.shortName == 'LaserUltra' || attribute.shortName == '3D' ? (
+        attribute.shortName != 'Pauze' && attribute.shortName != 'Familie' && attribute.shortName != 'Franse F' ? (
+          attribute.shortName == 'LaserUltra' || attribute.shortName == '3D' || attribute.shortName == '4DX' || attribute.shortName == 'IMAX3D' ? (
             <div key={attribute.id} className="flex items-center">
               <div className="bg-white rounded-full w-6 h-6 mr-2">
                 <img
