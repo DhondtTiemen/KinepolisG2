@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { startTransition, useEffect, useState } from 'react'
 // export const timerPage = (
 //   time: number,
 // ) => {
@@ -61,8 +61,8 @@ export default function PageIndicator({
         >
           {/* <div className={`${checkTimeOver()}`}> */}
           <div
-            style={{ width: checkBreed(width, i + 1), maxWidth: 80 }}
-            className={` dark:bg-warning bg-error rounded-full h-3 ease-linear duration-${checkTimeOver} `}
+            style={{ width: checkBreed(width, i + 1), maxWidth: 80, transitionTimingFunction:'linear',transitionDuration:`${checkTimeOver}ms` }}
+            className={` dark:bg-warning bg-error rounded-full h-3`}
           ></div>
           {/* </div> */}
         </div>,
