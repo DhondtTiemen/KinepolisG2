@@ -10,22 +10,20 @@ export default function MovieList({
   moviesPerPage,
   location,
   timing,
+  timeBefore,
+  timeAfter,
 }: {
   moviesPerPage: number
   location: string
   timing: number
+  timeBefore: number
+  timeAfter: number
 }) {
   const [movies, setMovies] = useState<Movie[]>()
   const [lists, setLists] = useState<JSX.Element[]>()
   const [pages, setPages] = useState<number>(0)
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [slide, setSlide] = useState<React.CSSProperties>()
-
-  //Get Time
-  let today = new Date()
-  let currentTime = today.getHours() + ':' + today.getMinutes()
-
-  let checkTime = today.getHours() + 2 + ':' + today.getMinutes()
 
   const sortedMovies = async (list: Movie[]) => {
     const sorted = list.sort(
