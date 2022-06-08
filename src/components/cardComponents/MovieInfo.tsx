@@ -26,10 +26,10 @@ export default function MovieInfo({
     return new Promise((resolve) => setTimeout(resolve, ms))
   }
   const checkTitleCharacters = () => {
-    if (title.length > 25) {
+    if (title.length > 30) {
       return (
         <Marquee
-          className="text-2xl w-[270px] text-alpha-x-light  dark:text-white font-bold"
+          className="text-2xl  text-alpha-x-light  dark:text-white font-bold"
           gradient={false}
           onCycleComplete={async () => {
             setPlay(false)
