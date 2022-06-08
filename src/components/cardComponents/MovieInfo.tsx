@@ -28,9 +28,7 @@ export default function MovieInfo({
   }
 
   const checkPause = ()=>{
-    if (play){
-      return true
-    }else{
+    if (!play){
       return false
     }
   }
@@ -46,7 +44,7 @@ export default function MovieInfo({
             setPlay(true)
           }}
           play={checkPause()}
-          speed={40}
+          speed={70}
         >
           {/* TODO: Titel de volledige breedte van het kaartje laten innemen?  */}
           <p className="pr-[50px]">{title}</p>
