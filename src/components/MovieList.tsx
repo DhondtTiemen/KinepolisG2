@@ -13,14 +13,14 @@ export default function MovieList({
   moviesPerPage,
   location,
   timing,
-  timeBefore,
-  timeAfter,
+  minutesBeforeNow,
+  minutesAfterNow,
 }: {
   moviesPerPage: number
   location: string
   timing: number
-  timeBefore: number
-  timeAfter: number
+  minutesBeforeNow: number
+  minutesAfterNow: number
 }) {
   const [movies, setMovies] = useState<Movie[]>()
   const [lists, setLists] = useState<JSX.Element[]>()
@@ -44,45 +44,26 @@ export default function MovieList({
 
   const checkMovieTime = async (list: Movie[]) => {
     const moviesInTime = []
+    const today = new Date()
+    const checkTime =
+      today.getHours() + minutesAfterNow / 60 + ':' + today.getMinutes()
+    const currentDate = new Date()
+    const futureDate = new Date(
+      currentDate.getTime() - minutesBeforeNow * 60000,
+    )
+    const toLateTime = futureDate.getHours() + ':' + futureDate.getMinutes()
 
-    //Get Time
-    let today = new Date()
-    let currentTime = today.getHours() + ':' + today.getMinutes()
-    let checkTime = today.getHours() + 4 + ':' + today.getMinutes()
+    for (let i = 0; i < list.length; i++) {
+      //@ts-ignore
+      const date = new Date(list[i].showtime)
+      const time = date.toLocaleTimeString('nl-BE', {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
 
-    var minutesToAdd = 30;
-    var currentDate = new Date();
-    var futureDate = new Date(currentDate.getTime() - minutesToAdd * 60000);
-    let toLateTime = futureDate.getHours() + ':' + futureDate.getMinutes()
-
-    console.log(toLateTime)
-
-    for (var i = 0; i < list.length; i++) {
-      // console.log(list[i])
-      const movieTime = list[i].showtime.toString().substring(11, 16)
-      console.log(movieTime)
-
-      if (toLateTime <= movieTime && checkTime >= movieTime) {
-        console.log('Filmtickets beschikbaar...')
+      if (toLateTime <= time && checkTime >= time) {
         moviesInTime.push(list[i])
       }
-      
-      // if (checkTime >= movieTime) {
-      //   console.log()
-
-      //   if (toLateTime >= movieTime && currentTime <= movieTime) {
-      //     console.log('Film is al begonnen, je bent wat laat...')
-      //   }
-
-      //   // if (currentTime <= movieTime) {
-      //   //   console.log('Film moet nog beginnen...')
-  
-      //     // if (checkTime >= movieTime) {
-      //     //   console.log('Film speelt binnen de gevraagde tijdsperiode...')
-      //     //   moviesInTime.push(list[i])
-      //     // }
-      //   // }
-      // }
     }
 
     setMovies(moviesInTime)
@@ -90,7 +71,6 @@ export default function MovieList({
   }
 
   const noMovies = async (tempPages: number) => {
-    console.log(pages, tempPages)
     setTimeout(() => {
       if (tempPages == 0 && pages == 0) {
         const tempLists: JSX.Element[] = []
@@ -160,19 +140,6 @@ export default function MovieList({
     }
     return [beginList, endList]
   }
-
-  useEffect(() => {
-    console.log([
-      <div
-        key={0}
-        className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-black dark:text-white text-3xl font-proxima font-medium text-center"
-      >
-        <span className="text-error">
-          LOADING <span className="text-good">LOADING</span> LOADING
-        </span>
-      </div>,
-    ] as JSX.Element[])
-  }, [])
 
   useEffect(() => {
     if (!movies) {

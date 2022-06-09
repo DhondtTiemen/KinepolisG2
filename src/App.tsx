@@ -13,10 +13,14 @@ export default function App() {
   let location = new URLSearchParams(search).get('location')?.toString()
   /* @ts-ignore */
   let timing = parseInt(new URLSearchParams(search).get('timing'))
-  /* @ts-ignore */
-  let timeBefore = parseInt(new URLSearchParams(search).get('timebefore'))
-  /* @ts-ignore */
-  let timeAfter = parseInt(new URLSearchParams(search).get('timeafter'))
+  let minutesBeforeNow = parseInt(
+    /* @ts-ignore */
+    new URLSearchParams(search).get('minutesbeforenow'),
+  )
+  let minutesAfterNow = parseInt(
+    /* @ts-ignore */
+    new URLSearchParams(search).get('minutesafternow'),
+  )
 
   const [movies, setMovies] = useState<Movie[]>()
 
@@ -36,8 +40,8 @@ export default function App() {
           moviesPerPage={8}
           location={location ? location : 'KLUIK'}
           timing={timing ? timing : 10}
-          timeBefore={timeBefore ? timeBefore : 6}
-          timeAfter={timeAfter ? timeAfter : 15}
+          minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
+          minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
         />
       </div>
 
