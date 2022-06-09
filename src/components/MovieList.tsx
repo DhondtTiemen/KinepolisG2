@@ -77,11 +77,11 @@ export default function MovieList({
         tempLists.push(
           <div
             key={0}
-            className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-black dark:text-white text-3xl font-proxima font-medium text-center"
+            className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-alpha-x-light dark:text-white text-3xl font-proxima font-medium text-center"
           >
             <span>Er worden momenteel geen films vertoont </span>
             <br />
-            <span className="text-warning">
+            <span className="dark:text-warning text-error">
               Scan de QR-code onderaan om tickets te kopen
             </span>
           </div>,
@@ -100,9 +100,19 @@ export default function MovieList({
           key={0}
           className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-black dark:text-white text-3xl font-proxima font-medium text-center"
         >
-          <span className="text-error">
-            LOADING <span className="text-good">LOADING</span> LOADING
-          </span>
+          <svg
+            className="dark:fill-white fill-alpha-x-light animate-opacity w-[250px] h-[250px]"
+            viewBox="280 280 350 350"
+          >
+            <path
+              d="M462.5,301.3L357,633.8l-0.3,0.9l105.3-74.9l0.2-0.2l106.8,75.2L531.4,509l0.1-0.2l104-83l-0.9,0.1
+	l-129.3,0L462.5,301.3z M467.6,389.9l-16.4-5.1l0.1-0.1l5.9-18.6l0.2,0.1l16,4.9l-5.6,18.8L467.6,389.9z M439,424.6l-0.1-0.2
+	l5.4-18.4l16.8,5.5l-0.1,0.3l-5.6,17.5l-0.1,0.2L439,424.6z M425.9,464.3l0.1-0.2l5.9-18l16.2,5.4l-0.1,0.3l-5.5,17.7l-0.1,0.2
+	L425.9,464.3z M413.3,504.6l-0.2-0.1l6.1-17.9l0.1-0.2l16.3,5.3l-0.1,0.3l-5.7,17.9L413.3,504.6z M400.7,544.9l-0.2-0.1l6-18.2
+	l0.2,0.1l15.5,5.2l-5.1,17.6l-0.1,0.2L400.7,544.9z M404,589.8l-16.5-5.6l5.8-17.7l0.1-0.3l16.4,5.7l-0.1,0.6l-5.5,17.5L404,589.8z
+	 M404.4,426L292.7,426l-0.8,0l92,74.7l0.1-0.3l23.6-74.5L404.4,426z"
+            />
+          </svg>
         </div>,
       )
       setLists(tempLists)
