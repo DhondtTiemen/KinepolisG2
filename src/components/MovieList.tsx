@@ -47,22 +47,24 @@ export default function MovieList({
 
     //Get Time
     let today = new Date()
+    let toLateTime = today.getHours() + ':' + today.getMinutes() + 30
     let currentTime = today.getHours() + ':' + today.getMinutes()
-    let checkTime = today.getHours() + 2 + ':' + today.getMinutes()
+    let checkTime = today.getHours() + 6 + ':' + today.getMinutes()
 
     for (var i = 0; i < list.length; i++) {
       // console.log(list[i])
       const movieTime = list[i].showtime.toString().substring(11, 16)
       console.log(movieTime)
-
-      if (currentTime <= movieTime) {
-        console.log('Film moet nog beginnen...')
-
-        if (checkTime >= movieTime) {
-          console.log('Film speelt binnen de gevraagde tijdsperiode...')
-          moviesInTime.push(list[i])
+      
+        if (currentTime <= movieTime) {
+          console.log('Film moet nog beginnen...')
+  
+          if (checkTime >= movieTime) {
+            console.log('Film speelt binnen de gevraagde tijdsperiode...')
+            moviesInTime.push(list[i])
+          }
         }
-      }
+      
     }
 
     setMovies(moviesInTime)
