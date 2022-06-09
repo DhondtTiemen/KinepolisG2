@@ -4,7 +4,10 @@ import { fetchMovies } from '../utils/fetchMovies'
 import { Movie } from '../classes/Movie'
 import MovieCard from './cardComponents/MovieCard'
 
+// TODO: films tonen X aantal uur voordat ze starten zijn (niet meer in fetchMovies)
 // TODO: films tonen X aantal minuten nadat ze gestart zijn (voor de laatkomers)
+// TODO: niet scrollen als er maar 1 pagina is
+// TODO: Loading screen wanneer app start
 
 export default function MovieList({
   moviesPerPage,
