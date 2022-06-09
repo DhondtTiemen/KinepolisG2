@@ -6,8 +6,8 @@ import MovieCard from './cardComponents/MovieCard'
 
 // TODO: films tonen X aantal uur voordat ze starten zijn (niet meer in fetchMovies)
 // TODO: films tonen X aantal minuten nadat ze gestart zijn (voor de laatkomers)
-// TODO: niet scrollen als er maar 1 pagina is
 // TODO: Loading screen wanneer app start
+// TODO: Iedere X aantal minuten films opnieuw sorteren op tijd & x aantal uur ervoor en x aantal minuten erna
 
 export default function MovieList({
   moviesPerPage,
@@ -24,7 +24,7 @@ export default function MovieList({
 }) {
   const [movies, setMovies] = useState<Movie[]>()
   const [lists, setLists] = useState<JSX.Element[]>()
-  const [pages, setPages] = useState<number>(0)
+  const [pages, setPages] = useState<number>(-1)
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [slide, setSlide] = useState<React.CSSProperties>()
 
@@ -40,37 +40,59 @@ export default function MovieList({
     return sorted
   }
 
+  const noMovies = async (tempPages: number) => {
+    console.log(pages, tempPages)
+    setTimeout(() => {
+      if (tempPages == 0 && pages == 0) {
+        const tempLists: JSX.Element[] = []
+        tempLists.push(
+          <div
+            key={0}
+            className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-black dark:text-white text-3xl font-proxima font-medium text-center"
+          >
+            <span>Er worden momenteel geen films vertoont </span>
+            <br />
+            <span className="text-warning">
+              Scan de QR-code onderaan om tickets te kopen
+            </span>
+          </div>,
+        )
+        setLists(tempLists)
+      }
+    }, 2000)
+  }
+
   const createLists = async () => {
     const tempLists: JSX.Element[] = []
-    if (pages == 0) {
+    const tempPages = await pages
+    if (tempPages < 1) {
       tempLists.push(
         <div
           key={0}
           className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-black dark:text-white text-3xl font-proxima font-medium text-center"
         >
-          <span>Er worden momenteel geen films vertoont </span>
-          <br />
-          <span className="text-warning">
-            Scan de QR-code onderaan om tickets te kopen
+          <span className="text-error">
+            LOADING <span className="text-good">LOADING</span> LOADING
           </span>
         </div>,
       )
-    } else {
-      for (let index = 0; index < pages + 1; index++) {
-        let indexes = getIndexes(index)
-        const element = (
-          <div
-            key={index}
-            className="flex gap-4 flex-wrap w-screen content-start mt-3 px-6"
-          >
-            {movies?.slice(indexes[0], indexes[1]).map((movie) => {
-              /*@ts-ignore*/
-              return <MovieCard movie={movie} key={movie.id} />
-            })}
-          </div>
-        )
-        tempLists.push(element)
-      }
+      setLists(tempLists)
+    }
+    noMovies(tempPages)
+    for (let index = 0; index < pages + 1; index++) {
+      let indexes = getIndexes(index)
+      const element = (
+        <div
+          key={index}
+          className="flex gap-4 flex-wrap w-screen content-start mt-3 px-6"
+        >
+          {movies?.slice(indexes[0], indexes[1]).map((movie) => {
+            /*@ts-ignore*/
+            return <MovieCard movie={movie} key={movie.id} />
+          })}
+        </div>
+      )
+      tempLists.push(element)
     }
     setLists(tempLists)
   }
@@ -91,6 +113,19 @@ export default function MovieList({
   }
 
   useEffect(() => {
+    console.log([
+      <div
+        key={0}
+        className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-black dark:text-white text-3xl font-proxima font-medium text-center"
+      >
+        <span className="text-error">
+          LOADING <span className="text-good">LOADING</span> LOADING
+        </span>
+      </div>,
+    ] as JSX.Element[])
+  }, [])
+
+  useEffect(() => {
     if (!movies) {
       getMovies()
     }
@@ -101,7 +136,7 @@ export default function MovieList({
   }, [pages])
 
   useEffect(() => {
-    if (pages > 0) {
+    if (pages > 1) {
       setTimeout(() => {
         if (currentPage == pages - 1) {
           setCurrentPage(0)

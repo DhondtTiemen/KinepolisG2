@@ -9,7 +9,12 @@ export default function MovieTimeInfo({
   cosy: boolean
   special: boolean
 }) {
-  const time = movieTime.substring(11, 16)
+  const date = new Date(movieTime)
+  const time = date.toLocaleTimeString('nl-BE', {
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+
   //console.log(time)
   //console.log(movieHall)
   //console.log(cosy)

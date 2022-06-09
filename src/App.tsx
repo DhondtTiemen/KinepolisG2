@@ -36,8 +36,8 @@ export default function App() {
           moviesPerPage={8}
           location={location ? location : 'KLUIK'}
           timing={timing ? timing : 10}
-          timeBefore={timeBefore ? timeBefore : 0}
-          timeAfter={timeAfter ? timeAfter : 0}
+          timeBefore={timeBefore ? timeBefore : 6}
+          timeAfter={timeAfter ? timeAfter : 15}
         />
       </div>
 
