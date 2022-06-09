@@ -23,11 +23,13 @@ export default function MovieTechnology({
                 attribute.shortName == '3D' ||
                 attribute.shortName == '4DX' ||
                 attribute.shortName == 'IMAX3D' ? (
-                  attribute.shortName == '3D' ? (
+                  attribute.shortName == '3D' || attribute.shortName == 'LaserUltra' ? (
                     <div key={attribute.id} className="flex items-center">
                       <div className="bg-white rounded-full w-6 h-6">
-                        src={`${baseURL}${attribute.imageUrl}`}
-                        <img alt={attribute.shortName} />
+                        <img 
+                          src={`${baseURL}${attribute.imageUrl}`}
+                          alt={attribute.shortName} 
+                        />
                       </div>
                     </div>
                   ) : (
