@@ -23,23 +23,25 @@ export default function PageIndicator({
 
   const NumberOfPages = () => {
     const code: JSX.Element[] = []
-    for (let i = 0; i < page; i++) {
-      code.push(
-        <div
-          key={i}
-          className="rounded-full w-20 h-3 bg-gray-xx-light dark:bg-alpha-x"
-        >
+    if (page >1){
+      for (let i = 0; i < page; i++) {
+        code.push(
           <div
-            style={{
-              width: checkBreed(width, i + 1),
-              maxWidth: 80,
-              transitionTimingFunction: 'linear',
-              transitionDuration: `${checkTimeOver}ms`,
-            }}
-            className={` dark:bg-warning bg-error rounded-full h-3`}
-          ></div>
-        </div>,
-      )
+            key={i}
+            className="rounded-full w-20 h-3 bg-gray-xx-light dark:bg-alpha-x"
+          >
+            <div
+              style={{
+                width: checkBreed(width, i + 1),
+                maxWidth: 80,
+                transitionTimingFunction: 'linear',
+                transitionDuration: `${checkTimeOver}ms`,
+              }}
+              className={` dark:bg-warning bg-error rounded-full h-3`}
+            ></div>
+          </div>,
+        )
+      }
     }
 
     return code
