@@ -1,4 +1,6 @@
 import { startTransition, useEffect, useState } from 'react'
+// TODO: Indicator niet weergeven wanneer er maar 1 pagina (pages == 1)
+
 // export const timerPage = (
 //   time: number,
 // ) => {
@@ -61,7 +63,12 @@ export default function PageIndicator({
         >
           {/* <div className={`${checkTimeOver()}`}> */}
           <div
-            style={{ width: checkBreed(width, i + 1), maxWidth: 80, transitionTimingFunction:'linear',transitionDuration:`${checkTimeOver}ms` }}
+            style={{
+              width: checkBreed(width, i + 1),
+              maxWidth: 80,
+              transitionTimingFunction: 'linear',
+              transitionDuration: `${checkTimeOver}ms`,
+            }}
             className={` dark:bg-warning bg-error rounded-full h-3`}
           ></div>
           {/* </div> */}
@@ -75,7 +82,7 @@ export default function PageIndicator({
   useEffect(() => {
     timer >= 0 && setTimeout(() => setTimer(timer + 1), 1000)
     if (Math.round(width) % 80 != 0 || timer == 0) {
-      setWidth((width + 80 / timing))
+      setWidth(width + 80 / timing)
     }
     if (timer % (timing + 1) == 0) {
       setWidth(width + 80 / timing)
