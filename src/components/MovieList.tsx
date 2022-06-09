@@ -33,11 +33,60 @@ export default function MovieList({
       //@ts-ignore
       (x, y) => +new Date(x.showtime) - +new Date(y.showtime),
     )
-    setMovies(sorted)
-    setPages(Math.ceil(list.length / moviesPerPage))
+    // setMovies(sorted)
+    const checkedList = await checkMovieTime(sorted)
+    // console.log(checkedList.length)
+    setPages(Math.ceil(checkedList.length / moviesPerPage))
     //Test om te zien of er iets verschijnt als er geen films zijn.
     //setPages(0)
     return sorted
+  }
+
+  const checkMovieTime = async (list: Movie[]) => {
+    const moviesInTime = []
+
+    //Get Time
+    let today = new Date()
+    let currentTime = today.getHours() + ':' + today.getMinutes()
+    let checkTime = today.getHours() + 4 + ':' + today.getMinutes()
+
+    var minutesToAdd = 30;
+    var currentDate = new Date();
+    var futureDate = new Date(currentDate.getTime() - minutesToAdd * 60000);
+    let toLateTime = futureDate.getHours() + ':' + futureDate.getMinutes()
+
+    console.log(toLateTime)
+
+    for (var i = 0; i < list.length; i++) {
+      // console.log(list[i])
+      const movieTime = list[i].showtime.toString().substring(11, 16)
+      console.log(movieTime)
+
+      if (toLateTime <= movieTime && checkTime >= movieTime) {
+        console.log('Filmtickets beschikbaar...')
+        moviesInTime.push(list[i])
+      }
+      
+      // if (checkTime >= movieTime) {
+      //   console.log()
+
+      //   if (toLateTime >= movieTime && currentTime <= movieTime) {
+      //     console.log('Film is al begonnen, je bent wat laat...')
+      //   }
+
+      //   // if (currentTime <= movieTime) {
+      //   //   console.log('Film moet nog beginnen...')
+  
+      //     // if (checkTime >= movieTime) {
+      //     //   console.log('Film speelt binnen de gevraagde tijdsperiode...')
+      //     //   moviesInTime.push(list[i])
+      //     // }
+      //   // }
+      // }
+    }
+
+    setMovies(moviesInTime)
+    return moviesInTime
   }
 
   const noMovies = async (tempPages: number) => {

@@ -42,7 +42,6 @@ export default function MovieInfo({
           }}
           speed={speed}
         >
-          {/* TODO: Titel de volledige breedte van het kaartje laten innemen?  */}
           <p className="pr-[50px]">{title}</p>
         </Marquee>
       )
