@@ -16,14 +16,14 @@ export const fetchMovies = async (location: string) => {
     .then((movieData) => {
       movieData.sessions.map((session: ISession) => {
         //Get Time
-        let today = new Date()
-        let currentTime = today.getHours() + ':' + today.getMinutes()
-        let checkTime = today.getHours() + 6 + ':' + today.getMinutes()
-        const movieTime = session.showtime.toString().substring(11, 16)
+        // let today = new Date()
+        // let currentTime = today.getHours() + ':' + today.getMinutes()
+        // let checkTime = today.getHours() + 6 + ':' + today.getMinutes()
+        // const movieTime = session.showtime.toString().substring(11, 16)
 
-        if (currentTime <= movieTime) {
+        // if (currentTime <= movieTime) {
           // console.log('Moet nog beginnen')
-          if (checkTime >= movieTime) {
+          // if (checkTime >= movieTime) {
             // Session in MovieObject plaatsen
             const movieObject = new Movie(session)
 
@@ -46,8 +46,8 @@ export const fetchMovies = async (location: string) => {
 
             // MovieObject toevoegen aan movies array
             movies.push(movieObject)
-          }
-        }
+          // }
+        // }
       })
     })
     .then(() => movies) // Return movies array
