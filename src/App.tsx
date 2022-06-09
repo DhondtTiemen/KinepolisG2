@@ -47,13 +47,13 @@ export default function App() {
 
       <Trailer
         video={
-          'https://www.youtube.com/embed/YOtkCKM41Wc?controls=0&autoplay=1'
+          'https://www.youtube.com/embed/qSqVVswa420?controls=0&autoplay=1'
         }
       >
         <TrailerCard
           link="https://www.kinepolis.be"
           text="Koop hier je tickets voor"
-          subText="Clifford De Grote Rode Hond"
+          subText="Top Gun: Maverick"
         />
         <TrailerCard
           link="https://www.kinepolis.be"
