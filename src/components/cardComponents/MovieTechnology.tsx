@@ -68,9 +68,10 @@ export default function MovieTechnology({
                 attribute.shortName == 'IMAX3D' ? (
                   <div key={attribute.id} className="flex items-center">
                     <div className="bg-white rounded-full w-6 h-6 mr-2">
-                      src={`${baseURL}${attribute.imageUrl}`}
-                      <img />
-                      alt={attribute.shortName}
+                      <img 
+                        src={`${baseURL}${attribute.imageUrl}`}
+                        alt={attribute.shortName}
+                      />
                     </div>
                     <div className="bg-alpha-xxx-light opacity-40 dark:bg-gray-xx-light dark:opacity-100 w-[2px] rounded-sm h-5"></div>
                   </div>
