@@ -47,24 +47,42 @@ export default function MovieList({
 
     //Get Time
     let today = new Date()
-    let toLateTime = today.getHours() + ':' + today.getMinutes() + 30
     let currentTime = today.getHours() + ':' + today.getMinutes()
-    let checkTime = today.getHours() + 6 + ':' + today.getMinutes()
+    let checkTime = today.getHours() + 4 + ':' + today.getMinutes()
+
+    var minutesToAdd = 30;
+    var currentDate = new Date();
+    var futureDate = new Date(currentDate.getTime() - minutesToAdd * 60000);
+    let toLateTime = futureDate.getHours() + ':' + futureDate.getMinutes()
+
+    console.log(toLateTime)
 
     for (var i = 0; i < list.length; i++) {
       // console.log(list[i])
       const movieTime = list[i].showtime.toString().substring(11, 16)
       console.log(movieTime)
+
+      if (toLateTime <= movieTime && checkTime >= movieTime) {
+        console.log('Filmtickets beschikbaar...')
+        moviesInTime.push(list[i])
+      }
       
-        if (currentTime <= movieTime) {
-          console.log('Film moet nog beginnen...')
+      // if (checkTime >= movieTime) {
+      //   console.log()
+
+      //   if (toLateTime >= movieTime && currentTime <= movieTime) {
+      //     console.log('Film is al begonnen, je bent wat laat...')
+      //   }
+
+      //   // if (currentTime <= movieTime) {
+      //   //   console.log('Film moet nog beginnen...')
   
-          if (checkTime >= movieTime) {
-            console.log('Film speelt binnen de gevraagde tijdsperiode...')
-            moviesInTime.push(list[i])
-          }
-        }
-      
+      //     // if (checkTime >= movieTime) {
+      //     //   console.log('Film speelt binnen de gevraagde tijdsperiode...')
+      //     //   moviesInTime.push(list[i])
+      //     // }
+      //   // }
+      // }
     }
 
     setMovies(moviesInTime)
