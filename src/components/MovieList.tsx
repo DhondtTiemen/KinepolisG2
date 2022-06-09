@@ -4,7 +4,10 @@ import { fetchMovies } from '../utils/fetchMovies'
 import { Movie } from '../classes/Movie'
 import MovieCard from './cardComponents/MovieCard'
 
+// TODO: films tonen X aantal uur voordat ze starten zijn (niet meer in fetchMovies)
 // TODO: films tonen X aantal minuten nadat ze gestart zijn (voor de laatkomers)
+// TODO: niet scrollen als er maar 1 pagina is
+// TODO: Loading screen wanneer app start
 
 export default function MovieList({
   moviesPerPage,
@@ -30,11 +33,40 @@ export default function MovieList({
       //@ts-ignore
       (x, y) => +new Date(x.showtime) - +new Date(y.showtime),
     )
-    setMovies(sorted)
-    setPages(Math.ceil(list.length / moviesPerPage))
+    // setMovies(sorted)
+    const checkedList = await checkMovieTime(sorted)
+    // console.log(checkedList.length)
+    setPages(Math.ceil(checkedList.length / moviesPerPage))
     //Test om te zien of er iets verschijnt als er geen films zijn.
     //setPages(0)
     return sorted
+  }
+
+  const checkMovieTime = async (list: Movie[]) => {
+    const moviesInTime = []
+
+    //Get Time
+    let today = new Date()
+    let currentTime = today.getHours() + ':' + today.getMinutes()
+    let checkTime = today.getHours() + 2 + ':' + today.getMinutes()
+
+    for (var i = 0; i < list.length; i++) {
+      // console.log(list[i])
+      const movieTime = list[i].showtime.toString().substring(11, 16)
+      console.log(movieTime)
+
+      if (currentTime <= movieTime) {
+        console.log('Film moet nog beginnen...')
+
+        if (checkTime >= movieTime) {
+          console.log('Film speelt binnen de gevraagde tijdsperiode...')
+          moviesInTime.push(list[i])
+        }
+      }
+    }
+
+    setMovies(moviesInTime)
+    return moviesInTime
   }
 
   const createLists = async () => {
