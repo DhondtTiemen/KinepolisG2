@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Marquee from 'react-fast-marquee'
 import MovieTechnology from './MovieTechnology'
-import { Format, SessionAttribute } from '../../interfaces/Movies' 
+import { Format, SessionAttribute } from '../../interfaces/Movies'
 
 export default function MovieInfo({
   title,
@@ -12,8 +12,8 @@ export default function MovieInfo({
 }: {
   title: string
   genre: []
-  version: string,
-  format: Format,
+  version: string
+  format: Format
   sessionAttributes: SessionAttribute[]
 }) {
   const [speed, setSpeed] = useState<number>(0)
@@ -68,11 +68,14 @@ export default function MovieInfo({
       <p className="text-[14px] text-alpha-xxx-light -mt-[2px] dark:text-gray font-medium">
         {version}
       </p>
-      <div className="flex items-end justify-between w-full -mt-2">
+      <div className="flex items-end justify-between h-6 w-full -mt-2">
         <p className="text-[11px] text-error dark:text-warning  ">
           {ArrayToString(genre).toString().replace(',', ' | ')}
         </p>
-        <MovieTechnology format={format} sessionAttributes={sessionAttributes} />
+        <MovieTechnology
+          format={format}
+          sessionAttributes={sessionAttributes}
+        />
       </div>
     </div>
   )
