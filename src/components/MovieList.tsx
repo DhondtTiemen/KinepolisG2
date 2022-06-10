@@ -76,7 +76,7 @@ export default function MovieList({
         const tempLists: JSX.Element[] = []
         tempLists.push(
           <div
-            key={0}
+            key={1234567890}
             className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-alpha-x-light dark:text-white text-3xl font-proxima font-medium text-center"
           >
             <span>Er worden momenteel geen films vertoont </span>
@@ -97,7 +97,7 @@ export default function MovieList({
     if (tempPages < 1) {
       tempLists.push(
         <div
-          key={0}
+          key={9876543210}
           className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-black dark:text-white text-3xl font-proxima font-medium text-center"
         >
           <svg
