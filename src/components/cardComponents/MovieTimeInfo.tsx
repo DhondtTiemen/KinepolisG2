@@ -15,10 +15,6 @@ export default function MovieTimeInfo({
     minute: '2-digit',
   })
 
-  //console.log(time)
-  //console.log(movieHall)
-  //console.log(cosy)
-  //console.log(special)
 
   return (
     <div className="w-2/4 text-alpha-xxx-light dark:text-gray font-proxima">

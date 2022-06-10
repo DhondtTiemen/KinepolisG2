@@ -4,9 +4,6 @@ import { fetchMovies } from '../utils/fetchMovies'
 import { Movie } from '../classes/Movie'
 import MovieCard from './cardComponents/MovieCard'
 
-// TODO: films tonen X aantal uur voordat ze starten zijn (niet meer in fetchMovies)
-// TODO: films tonen X aantal minuten nadat ze gestart zijn (voor de laatkomers)
-// TODO: Loading screen wanneer app start
 // TODO: Iedere X aantal minuten films opnieuw sorteren op tijd & x aantal uur ervoor en x aantal minuten erna
 
 export default function MovieList({
@@ -37,10 +34,7 @@ export default function MovieList({
     setMovies(sorted)
     const checkedList = await checkMovieTime(sorted)
     setFilteredMovies(checkedList)
-    // console.log(checkedList.length)
     setPages(Math.ceil(checkedList.length / moviesPerPage))
-    //Test om te zien of er iets verschijnt als er geen films zijn.
-    //setPages(0)
     return sorted
   }
 

@@ -29,7 +29,6 @@ export default function App() {
       className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light "
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
     >
-      {/* <div className="flex flex-col justify-between h-screen dark:bg-black dark:bg-opacity-70  backdrop-blur-xl"> */}
       <div className="h-2/3">
         <div className="flex justify-between items-center mx-6 pt-4">
           <Logo />
