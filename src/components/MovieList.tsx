@@ -79,7 +79,9 @@ export default function MovieList({
       }
     }, 2000)
   }
-
+  function delay(ms: number) {
+    return new Promise((resolve) => setTimeout(resolve, ms))
+  }
   const createLists = async () => {
     const tempLists: JSX.Element[] = []
     const tempPages = await pages
@@ -106,6 +108,8 @@ export default function MovieList({
       )
       setLists(tempLists)
     }
+    await delay(1500)
+
     noMovies(tempPages)
     for (let index = 0; index < pages + 1; index++) {
       let indexes = getIndexes(index)
