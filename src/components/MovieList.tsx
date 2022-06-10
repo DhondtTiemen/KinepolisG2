@@ -23,6 +23,7 @@ export default function MovieList({
   minutesAfterNow: number
 }) {
   const [movies, setMovies] = useState<Movie[]>()
+  const [filteredMovies, setFilteredMovies] = useState<Movie[]>()
   const [lists, setLists] = useState<JSX.Element[]>()
   const [pages, setPages] = useState<number>(-1)
   const [currentPage, setCurrentPage] = useState<number>(0)
@@ -33,8 +34,9 @@ export default function MovieList({
       //@ts-ignore
       (x, y) => +new Date(x.showtime) - +new Date(y.showtime),
     )
-    // setMovies(sorted)
+    setMovies(sorted)
     const checkedList = await checkMovieTime(sorted)
+    setFilteredMovies(checkedList)
     // console.log(checkedList.length)
     setPages(Math.ceil(checkedList.length / moviesPerPage))
     //Test om te zien of er iets verschijnt als er geen films zijn.
@@ -43,28 +45,23 @@ export default function MovieList({
   }
 
   const checkMovieTime = async (list: Movie[]) => {
-    const moviesInTime = []
+    const moviesInTime: Movie[] = []
     const today = new Date()
-    const checkTime =
-      today.getHours() + minutesAfterNow / 60 + ':' + today.getMinutes()
-    const currentDate = new Date()
-    const futureDate = new Date(currentDate.getTime() - minutesBeforeNow * 60)
-    const toLateTime = futureDate.getHours() + ':' + futureDate.getMinutes()
 
-    for (let i = 0; i < list.length; i++) {
+    const timeAfter = new Date(today.getTime() + minutesAfterNow * 60000)
+    const timeBefore = new Date(today.getTime() - minutesBeforeNow * 60000)
+
+    list.map((movie) => {
       //@ts-ignore
-      const date = new Date(list[i].showtime)
-      const time = date.toLocaleTimeString('nl-BE', {
-        hour: '2-digit',
-        minute: '2-digit',
-      })
-
-      if (toLateTime <= time && checkTime >= time) {
-        moviesInTime.push(list[i])
+      const showtime = new Date(movie.showtime)
+      if (
+        showtime.getTime() >= timeBefore.getTime() &&
+        showtime.getTime() <= timeAfter.getTime()
+      ) {
+        moviesInTime.push(movie)
       }
-    }
+    })
 
-    setMovies(moviesInTime)
     return moviesInTime
   }
 
@@ -123,7 +120,7 @@ export default function MovieList({
           key={index}
           className="flex gap-4 flex-wrap w-screen content-start mt-3 px-6"
         >
-          {movies?.slice(indexes[0], indexes[1]).map((movie) => {
+          {filteredMovies?.slice(indexes[0], indexes[1]).map((movie) => {
             /*@ts-ignore*/
             return <MovieCard movie={movie} key={movie.id} />
           })}
@@ -150,10 +147,10 @@ export default function MovieList({
   }
 
   useEffect(() => {
-    if (!movies) {
+    if (!filteredMovies) {
       getMovies()
     }
-  }, [movies])
+  }, [filteredMovies, movies])
 
   useEffect(() => {
     createLists()
