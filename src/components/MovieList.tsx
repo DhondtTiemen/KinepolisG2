@@ -48,9 +48,7 @@ export default function MovieList({
     const checkTime =
       today.getHours() + minutesAfterNow / 60 + ':' + today.getMinutes()
     const currentDate = new Date()
-    const futureDate = new Date(
-      currentDate.getTime() - minutesBeforeNow * 60000,
-    )
+    const futureDate = new Date(currentDate.getTime() - minutesBeforeNow * 60)
     const toLateTime = futureDate.getHours() + ':' + futureDate.getMinutes()
 
     for (let i = 0; i < list.length; i++) {
