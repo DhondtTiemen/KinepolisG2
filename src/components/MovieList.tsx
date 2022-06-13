@@ -108,7 +108,7 @@ export default function MovieList({
       )
       setLists(tempLists)
     }
-    await delay(1500)
+    await delay(1000)
 
     noMovies(tempPages)
     for (let index = 0; index < pages + 1; index++) {
