@@ -9,7 +9,13 @@ import PageIndicator from '../PageIndicator'
 import MovieLabel from './MovieLabel'
 import { Movie } from '../../classes/Movie'
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+export default function MovieCard({
+  movie,
+  location,
+}: {
+  movie: Movie
+  location: string
+}) {
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
@@ -84,7 +90,7 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               fgColor={darkMode ? 'white' : '#004680'}
               size={65}
               //@ts-ignore
-              value={`https://kinepolis.be/nl/goto-checkout-gate/${movie.vistaSessionId}/KBRG`}
+              value={`https://kinepolis.be/nl/goto-checkout-gate/${movie.vistaSessionId}/${location}`}
             />
             <MovieSeats
               //@ts-ignore
