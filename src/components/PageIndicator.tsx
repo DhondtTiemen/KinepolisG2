@@ -28,7 +28,7 @@ export default function PageIndicator({
         code.push(
           <div
             key={i}
-            className="rounded-full w-20 h-3 bg-gray-xx-light dark:bg-alpha-x"
+            className="rounded-full w-20 h-3 bg-gray dark:bg-alpha-x"
           >
             <div
               style={{
