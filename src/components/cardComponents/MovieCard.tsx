@@ -36,7 +36,10 @@ export default function MovieCard({
 
   const setLabels = async () => {
     //@ts-ignore
-    if (movie.popular == true || movie.lastTickets == true) {
+    if (
+      movie.popular == true ||
+      (movie.lastTickets == true && movie.availableSeats != 0)
+    ) {
       //@ts-ignore
       if (movie.popular == true) {
         setLabel(true)
@@ -58,6 +61,9 @@ export default function MovieCard({
     <div
       className={`${
         label == false
+          ? 'border-none'
+          : // @ts-ignore
+          movie.availableSeats == 0
           ? 'border-none'
           : labelType == 'popular'
           ? 'dark:border-alpha-xx-light border-alpha-x-light border-[3px]'
