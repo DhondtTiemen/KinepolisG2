@@ -35,9 +35,10 @@ export default function MovieCard({
   }, [])
 
   const setLabels = async () => {
-    //@ts-ignore
     if (
+      //@ts-ignore
       movie.popular == true ||
+      //@ts-ignore
       (movie.lastTickets == true && movie.availableSeats != 0)
     ) {
       //@ts-ignore
