@@ -56,9 +56,4 @@ export class Movie {
       popular,
     })
   }
-
-  render() {
-    // @ts-ignore
-    return <h1>{this.movie.title}</h1>
-  }
 }

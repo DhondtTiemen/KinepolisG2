@@ -3,13 +3,17 @@ import { useEffect, useState } from 'react'
 import MovieCover from './MovieCover'
 import MovieInfo from './MovieInfo'
 import MovieSeats from './MovieSeats'
-import MovieTechnology from './MovieTechnology'
 import MovieTimeInfo from './MovieTimeInfo'
-import PageIndicator from '../PageIndicator'
 import MovieLabel from './MovieLabel'
 import { Movie } from '../../classes/Movie'
 
-export default function MovieCard({ movie }: { movie: Movie }) {
+export default function MovieCard({
+  movie,
+  location,
+}: {
+  movie: Movie
+  location: string
+}) {
   const [darkMode, setDarkMode] = useState<boolean>(
     window.matchMedia('(prefers-color-scheme: dark)').matches,
   )
@@ -29,9 +33,13 @@ export default function MovieCard({ movie }: { movie: Movie }) {
   }, [])
 
   const setLabels = async () => {
-    // @ts-ignore
-    if (movie.popular == true || movie.lastTickets == true) {
-      // @ts-ignore
+    if (
+      //@ts-ignore
+      movie.popular == true ||
+      //@ts-ignore
+      (movie.lastTickets == true && movie.availableSeats != 0)
+    ) {
+      //@ts-ignore
       if (movie.popular == true) {
         setLabel(true)
         setLabelType('popular')
@@ -53,6 +61,9 @@ export default function MovieCard({ movie }: { movie: Movie }) {
       className={`${
         label == false
           ? 'border-none'
+          : // @ts-ignore
+          movie.availableSeats == 0
+          ? 'border-none'
           : labelType == 'popular'
           ? 'dark:border-alpha-xx-light border-alpha-x-light border-[3px]'
           : 'dark:border-warning border-error border-[3px]'
@@ -60,18 +71,18 @@ export default function MovieCard({ movie }: { movie: Movie }) {
     >
       <div className="flex h-[61%]">
         <div className="w-[35%]">
-          {/* @ts-ignore */}
+          {/*@ts-ignore*/}
           <MovieCover images={movie.movie.images} />
         </div>
         <div className="w-2/4 mt-4">
           <MovieTimeInfo
-            // @ts-ignore
+            //@ts-ignore
             movieTime={movie.showtime}
-            // @ts-ignore
+            //@ts-ignore
             movieHall={movie.hall}
-            // @ts-ignore
+            //@ts-ignore
             cosy={movie.hasCosySeating}
-            // @ts-ignore
+            //@ts-ignore
             special={movie.hasSpecialSeating}
           />
         </div>
@@ -83,26 +94,28 @@ export default function MovieCard({ movie }: { movie: Movie }) {
               bgColor="transparent"
               fgColor={darkMode ? 'white' : '#004680'}
               size={65}
-              // @ts-ignore
-              value={`https://kinepolis.be/nl/goto-checkout-gate/${movie.vistaSessionId}/KBRG`}
+              //@ts-ignore
+              value={`https://kinepolis.be/nl/goto-checkout-gate/${movie.vistaSessionId}/${location}`}
             />
             <MovieSeats
-              // @ts-ignore
+              //@ts-ignore
               lastTickets={movie.lastTickets}
-              // @ts-ignore
+              //@ts-ignore
               availableSeats={movie.availableSeats}
             />
           </div>
         </div>
       </div>
       <MovieInfo
-      // @ts-ignore
+        //@ts-ignore
         title={movie.movie.title}
-        // @ts-ignore
+        //@ts-ignore
         genre={movie.movie.genres}
-        // @ts-ignore
+        //@ts-ignore
         version={movie.movie.spokenLanguage.name}
-        // @ts-ignore
+        //@ts-ignore
+        format={movie.film.format}
+        //@ts-ignore
         sessionAttributes={movie.sessionAttributes}
       />
     </div>

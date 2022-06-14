@@ -2,7 +2,7 @@ module.exports = {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      proxima: ['Proxima Nova'],
+      proxima: ['proxima-nova', 'sans-serif'],
     },
     colors: {
       black: '#000000',
@@ -27,7 +27,7 @@ module.exports = {
     },
     extend: {
       animation: {
-        marquee: 'marquee 10s linear infinite',
+        opacity: 'opacity 2s ease-in-out infinite',
       },
       backgroundImage: {
         bg: "url('https://images.unsplash.com/photo-1579547621244-c07e55dcb856?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=639&q=80')",
@@ -35,9 +35,10 @@ module.exports = {
           "url('https://images.unsplash.com/photo-1556139943-4bdca53adf1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80')",
       },
       keyframes: {
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+        opacity: {
+          '0%': { opacity: 1, transform: 'scale(1)' },
+          '50%': { opacity: 0.5, transform: 'scale(0.95)' },
+          '100%': { opacity: 1, transform: 'scale(1)' },
         },
       },
     },
