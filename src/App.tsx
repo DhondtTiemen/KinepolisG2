@@ -2,8 +2,6 @@ import Clock from './components/Clock'
 import ToolTip from './components/ToolTip'
 import Trailer from './components/Trailer'
 import TrailerCard from './components/TrailerCard'
-import { useState } from 'react'
-import { Movie } from './classes/Movie'
 import MovieList from './components/MovieList'
 import Logo from './components/Logo'
 import { useLocation } from 'react-router-dom'
@@ -21,8 +19,6 @@ export default function App() {
     /* @ts-ignore */
     new URLSearchParams(search).get('minutesafternow'),
   )
-
-  const [movies, setMovies] = useState<Movie[]>()
 
   return (
     <div

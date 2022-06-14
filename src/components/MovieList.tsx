@@ -4,8 +4,6 @@ import { fetchMovies } from '../utils/fetchMovies'
 import { Movie } from '../classes/Movie'
 import MovieCard from './cardComponents/MovieCard'
 
-// TODO: Iedere X aantal minuten films opnieuw sorteren op tijd & x aantal uur ervoor en x aantal minuten erna
-
 export default function MovieList({
   moviesPerPage,
   location,
