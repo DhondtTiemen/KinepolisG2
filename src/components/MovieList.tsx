@@ -26,7 +26,8 @@ export default function MovieList({
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [slide, setSlide] = useState<React.CSSProperties>()
 
-  const sortedMovies = async (list: Movie[]) => {
+  const sortedMovies = async (list: Movie[] | undefined) => {
+    /*@ts-ignore*/
     const sorted = list.sort(
       //@ts-ignore
       (x, y) => +new Date(x.showtime) - +new Date(y.showtime),
@@ -119,8 +120,10 @@ export default function MovieList({
           className="flex gap-4 flex-wrap w-screen content-start mt-3 px-6"
         >
           {filteredMovies?.slice(indexes[0], indexes[1]).map((movie) => {
-            /*@ts-ignore*/
-            return <MovieCard location={location} movie={movie} key={movie.id} />
+            return (
+              /*@ts-ignore*/
+              <MovieCard location={location} movie={movie} key={movie.id} />
+            )
           })}
         </div>
       )
@@ -130,6 +133,7 @@ export default function MovieList({
   }
 
   const getMovies = async () => sortedMovies(await fetchMovies(location))
+  const refreshMovies = async () => sortedMovies(movies)
 
   const getIndexes = (list: number) => {
     let beginList: number = 0
@@ -147,6 +151,10 @@ export default function MovieList({
   useEffect(() => {
     if (!filteredMovies) {
       getMovies()
+    } else {
+      setInterval(() => {
+        refreshMovies()
+      }, 300000)
     }
   }, [filteredMovies, movies])
 
