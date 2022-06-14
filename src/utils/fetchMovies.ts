@@ -11,6 +11,10 @@ export const fetchMovies = async (location: string) => {
 
   return await fetch(
     `https://kinepolisweb-programmation.kinepolis.com/api//Programmation/BE/NL/${currentDate}/${location}/WWW`,
+    {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    },
   )
     .then((movieData) => movieData.json())
     .then((movieData) => {
@@ -35,5 +39,5 @@ export const fetchMovies = async (location: string) => {
         movies.push(movieObject)
       })
     })
-    .then(() => movies) 
+    .then(() => movies)
 }
