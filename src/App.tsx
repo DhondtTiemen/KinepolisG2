@@ -33,7 +33,7 @@ export default function App() {
         </div>
         <MovieList
           moviesPerPage={8}
-          location={location ? location : 'KBRG'}
+          location={location ? location.toUpperCase() : 'KBRG'}
           timing={timing ? timing : 10}
           minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
           minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
