@@ -151,8 +151,8 @@ export default function MovieList({
       getMovies()
     } else {
       setInterval(() => {
-        refreshMovies()
-      }, 300000)
+        getMovies()
+      }, 600000)
     }
   }, [filteredMovies, movies])
 
