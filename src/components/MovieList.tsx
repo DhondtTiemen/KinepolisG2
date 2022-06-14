@@ -67,7 +67,7 @@ export default function MovieList({
         tempLists.push(
           <div
             key={1234567890}
-            className="flex w-screen flex-col items-center h-full mt-3 px-6 justify-center text-alpha-x-light dark:text-white text-3xl font-proxima font-medium text-center"
+            className="flex flex-col items-center h-full mt-3 px-6 justify-center text-alpha-x-light dark:text-white text-3xl font-proxima font-medium text-center"
           >
             <span>Er worden momenteel geen films vertoont </span>
             <br />
@@ -117,7 +117,7 @@ export default function MovieList({
       const element = (
         <div
           key={index}
-          className="flex gap-4 flex-wrap w-screen content-start mt-3 px-6"
+          className=" gap-x-4 grid grid-cols-[repeat(2,383px)] justify-center  w-screen mt-3 px-6"
         >
           {filteredMovies?.slice(indexes[0], indexes[1]).map((movie) => {
             return (
