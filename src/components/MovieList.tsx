@@ -65,7 +65,7 @@ export default function MovieList({
         tempLists.push(
           <div
             key={1234567890}
-            className="flex flex-col items-center h-full mt-3 px-6 justify-center text-alpha-x-light dark:text-white text-3xl font-proxima font-medium text-center"
+            className="flex flex-col w-screen items-center h-full mt-3 px-6 justify-center text-alpha-x-light dark:text-white text-3xl font-proxima font-medium text-center"
           >
             <span>Er worden momenteel geen films vertoont </span>
             <br />
