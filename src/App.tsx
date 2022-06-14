@@ -26,7 +26,7 @@ export default function App() {
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
     >
       <div className="h-2/3">
-        <div className="flex justify-between items-center mx-6 pt-4">
+        <div className="grid grid-cols-3 items-center mx-6 pt-4">
           <Logo />
           <Clock />
           <ToolTip text={'Scan de QR-code, en koop tickets'} />

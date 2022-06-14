@@ -19,7 +19,7 @@ export default function Clock() {
 
   return (
     <div>
-      <time className="text-alpha-x-light dark:text-white font-proxima font-medium text-2xl">
+      <time className="text-alpha-x-light flex justify-center dark:text-white font-proxima font-medium text-2xl">
         {clockState}
       </time>
     </div>
