@@ -10,27 +10,14 @@ import { Movie } from '../../classes/Movie'
 export default function MovieCard({
   movie,
   location,
+  lightMode,
 }: {
   movie: Movie
   location: string
+  lightMode: boolean
 }) {
-  const [darkMode, setDarkMode] = useState<boolean>(
-    window.matchMedia('(prefers-color-scheme: dark)').matches,
-  )
   const [label, setLabel] = useState<boolean>(false)
   const [labelType, setLabelType] = useState<string>('')
-
-  useEffect(() => {
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (e) => setDarkMode(e.matches))
-    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
-    return () => {
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', () => {})
-    }
-  }, [])
 
   const setLabels = async () => {
     if (
@@ -92,7 +79,7 @@ export default function MovieCard({
           <div className="flex flex-wrap justify-end mr-4 mt-4">
             <QRCodeSVG
               bgColor="transparent"
-              fgColor={darkMode ? 'white' : '#004680'}
+              fgColor={!lightMode ? '#FFFFFF' : '#004680'}
               size={65}
               //@ts-ignore
               value={`https://kinepolis.be/nl/goto-checkout-gate/${movie.vistaSessionId}/${location}`}

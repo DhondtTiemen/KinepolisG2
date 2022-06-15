@@ -7,22 +7,8 @@ export default function TrailerCard({
   text,
   subText,
   secondary = false,
+  lightMode,
 }: TrailerCardInterface) {
-  const [darkMode, setDarkMode] = useState<boolean>(
-    window.matchMedia('(prefers-color-scheme: dark)').matches,
-  )
-
-  useEffect(() => {
-    window
-      .matchMedia('(prefers-color-scheme: dark)')
-      .addEventListener('change', (e) => setDarkMode(e.matches))
-    setDarkMode(window.matchMedia('(prefers-color-scheme: dark)').matches)
-    return () => {
-      window
-        .matchMedia('(prefers-color-scheme: dark)')
-        .removeEventListener('change', () => {})
-    }
-  }, [])
   return (
     <div
       className={`flex p-3 items-center h-full w-full max-w-sm xl:scale-[240%] ${
@@ -31,8 +17,8 @@ export default function TrailerCard({
     >
       <QRCodeSVG
         value={link}
-        fgColor={darkMode || secondary ? '#FFFFFF' : '#004680'}
-        bgColor="rgba(0,0,0,0)"
+        fgColor={!lightMode || secondary ? '#FFFFFF' : '#004680'}
+        bgColor="transparent"
         width="55"
         height="55"
       />
