@@ -20,6 +20,7 @@ export default function MovieList({
   const [movies, setMovies] = useState<Movie[]>()
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>()
   const [lists, setLists] = useState<JSX.Element[]>()
+  const [opacity, setOpacity] = useState<string>("opacity-0")
   const [pages, setPages] = useState<number>(-1)
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [slide, setSlide] = useState<React.CSSProperties>()
@@ -108,6 +109,7 @@ export default function MovieList({
       setLists(tempLists)
     }
     await delay(1000)
+    setOpacity("opacity-1")
 
     noMovies(tempPages)
     for (let index = 0; index < pages + 1; index++) {
@@ -115,7 +117,7 @@ export default function MovieList({
       const element = (
         <div
           key={index}
-          className=" gap-x-4 grid grid-cols-[repeat(2,383px)] justify-center  w-screen mt-3 px-6"
+          className=" gap-4 grid grid-cols-[repeat(2,383px)] justify-center w-screen h-full px-8"
         >
           {filteredMovies?.slice(indexes[0], indexes[1]).map((movie) => {
             return (
@@ -187,12 +189,12 @@ export default function MovieList({
 
   return (
     <div className="flex flex-col justify-between h-[93%] overflow-x-hidden">
-      <div className={`flex flex-row w-fit h-full`} style={slide}>
+      <div className={`flex flex-row w-fit `} style={slide}>
         {lists}
       </div>
-      <div className="flex gap-4 justify-center my-3 mb-[20px]">
-        <PageIndicator page={pages} timing={timing} />
-      </div>
+      <div className={`flex gap-4 justify-center my-3 ${opacity} mb-[20px] xl:my-10`}>
+     <PageIndicator page={pages} timing={timing} />
+    </div>
     </div>
   )
 }

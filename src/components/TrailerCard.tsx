@@ -25,7 +25,7 @@ export default function TrailerCard({
   }, [])
   return (
     <div
-      className={`flex flex-row p-3 items-center h-full w-full max-w-sm ${
+      className={`flex p-3 items-center h-full w-full max-w-sm xl:scale-[240%] ${
         secondary ? 'bg-alpha-x-light dark:bg-alpha-xx-light rounded-xl' : ''
       }`}
     >
