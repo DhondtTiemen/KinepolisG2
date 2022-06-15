@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom'
 export default function App() {
   const search = useLocation().search
   let location = new URLSearchParams(search).get('location')?.toString()
+  let lightMode = new URLSearchParams(search).get('lightmode')
   /* @ts-ignore */
   let timing = parseInt(new URLSearchParams(search).get('timing'))
   let minutesBeforeNow = parseInt(
@@ -38,13 +39,14 @@ export default function App() {
             timing={timing ? timing : 10}
             minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
             minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
+            lightMode={lightMode ? true : false}
           />
         </div>
       </div>
 
       <Trailer
         video={
-          'https://www.youtube.com/embed/v1vU5Gu4BFw?autoplay=1&mute=1&loop=1&playlist=v1vU5Gu4BFw&controls=0'
+          'https://www.youtube.com/embed/qSqVVswa420?autoplay=1&mute=1&loop=1&playlist=qSqVVswa420&controls=0'
         }
       >
         <TrailerCard
