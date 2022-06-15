@@ -10,12 +10,14 @@ export default function MovieList({
   timing,
   minutesBeforeNow,
   minutesAfterNow,
+  lightMode,
 }: {
   moviesPerPage: number
   location: string
   timing: number
   minutesBeforeNow: number
   minutesAfterNow: number
+  lightMode: boolean
 }) {
   const [movies, setMovies] = useState<Movie[]>()
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>()
