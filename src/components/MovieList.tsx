@@ -109,7 +109,6 @@ export default function MovieList({
       setLists(tempLists)
     }
     await delay(1000)
-    setOpacity("opacity-1")
 
     noMovies(tempPages)
     for (let index = 0; index < pages + 1; index++) {
@@ -130,6 +129,9 @@ export default function MovieList({
       tempLists.push(element)
     }
     setLists(tempLists)
+    
+    await delay(70)
+    setOpacity("opacity-1")
   }
 
   const getMovies = async () => sortedMovies(await fetchMovies(location))
@@ -160,6 +162,7 @@ export default function MovieList({
 
   useEffect(() => {
     createLists()
+    
   }, [pages])
 
   useEffect(() => {
