@@ -38,7 +38,7 @@ export default function MovieInfo({
           onCycleComplete={async () => {
             setSpeed(0)
             await delay(1000)
-            setSpeed(40)
+            setSpeed(95)
           }}
           speed={speed}
         >
@@ -55,7 +55,7 @@ export default function MovieInfo({
   }
   const start = async () => {
     await delay(1500)
-    setSpeed(40)
+    setSpeed(95)
   }
   useEffect(() => {
     start()

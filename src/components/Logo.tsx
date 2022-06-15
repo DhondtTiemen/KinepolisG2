@@ -1,6 +1,6 @@
 export default function Logo() {
   return (
-    <div className="w-44">
+    <div className="w-[65%]">
       <svg
         className="dark:fill-white fill-alpha-x-light"
         viewBox="75 400 800 200"

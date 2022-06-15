@@ -8,7 +8,7 @@ export default function MovieCover({ images }: { images: Image[] }) {
         cover.mediaType == 'Poster Graphic' ? (
           <div key={cover.url}>
             <img
-              className="rounded-md w-[70px] h-[100px] ml-4 mt-4 relative z-10"
+              className="rounded-md w-[70px] h-[100px] ml-4 mt-3 relative z-10"
               src={`${baseURL}${cover.url}`}
               alt={cover.mediaType}
             />
