@@ -22,7 +22,7 @@ export default function App() {
 
   return (
     <div
-      className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light "
+      className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light overflow-hidden"
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
     >
       <div className="h-2/3">
@@ -31,36 +31,34 @@ export default function App() {
           <Clock />
           <ToolTip text={'Scan de QR-code, en koop tickets'} />
         </div>
-        <div className='flex justify-center mt-[2%] content-start  xl:mt-[35%] xl:scale-[240%]'>
-
-        <MovieList
-          moviesPerPage={8}
-          location={location ? location.toUpperCase() : 'KBRG'}
-          timing={timing ? timing : 10}
-          minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
-          minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
-        />
+        <div className="flex justify-center mt-[2%] content-start  xl:mt-[35%] xl:scale-[240%]">
+          <MovieList
+            moviesPerPage={8}
+            location={location ? location.toUpperCase() : 'KBRG'}
+            timing={timing ? timing : 10}
+            minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
+            minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
+          />
         </div>
       </div>
 
       <Trailer
         video={
-          'https://www.youtube.com/embed/qSqVVswa420?controls=0&autoplay=1'
+          'https://www.youtube.com/embed/v1vU5Gu4BFw?autoplay=1&mute=1&loop=1&playlist=v1vU5Gu4BFw&controls=0'
         }
       >
-          <TrailerCard
-            link="https://www.kinepolis.be"
-            text="Koop hier je tickets voor"
-            subText="Top Gun: Maverick"
-          />
+        <TrailerCard
+          link="https://www.kinepolis.be"
+          text="Koop hier je tickets voor"
+          subText="Top Gun: Maverick"
+        />
 
-          <TrailerCard
-            link="https://www.kinepolis.be"
-            text="Film niet gevonden?"
-            subText="Scan hier voor andere films"
-            secondary
-          />
-
+        <TrailerCard
+          link="https://www.kinepolis.be"
+          text="Film niet gevonden?"
+          subText="Scan hier voor andere films"
+          secondary
+        />
       </Trailer>
     </div>
   )
