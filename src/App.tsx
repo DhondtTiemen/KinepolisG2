@@ -22,46 +22,48 @@ export default function App() {
   )
 
   return (
-    <div
-      className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light overflow-hidden"
-      style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
-    >
-      <div className="h-2/3">
-        <div className="grid grid-cols-3 items-center  mx-32 pt-14">
-          <Logo />
-          <Clock />
-          <ToolTip text={'Scan de QR-code, en koop tickets'} />
-        </div>
-        <div className="flex justify-center mt-[2%] content-start  xl:mt-[34%] xl:scale-[240%]">
-          <MovieList
-            moviesPerPage={8}
-            location={location ? location.toUpperCase() : 'KBRG'}
-            timing={timing ? timing : 10}
-            minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
-            minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
-            lightMode={lightMode ? true : false}
-          />
-        </div>
-      </div>
-
-      <Trailer
-        video={
-          'https://www.youtube.com/embed/qSqVVswa420?autoplay=1&mute=1&loop=1&playlist=qSqVVswa420&controls=0'
-        }
+    <div className="dark">
+      <div
+        className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light overflow-hidden "
+        style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
       >
-        <TrailerCard
-          link="https://www.kinepolis.be"
-          text="Koop hier je tickets voor"
-          subText="Top Gun: Maverick"
-        />
+        <div className="h-2/3">
+          <div className="grid grid-cols-3 items-center  mx-32 pt-14">
+            <Logo />
+            <Clock />
+            <ToolTip text={'Scan de QR-code, en koop tickets'} />
+          </div>
+          <div className="flex justify-center mt-[2%] content-start  xl:mt-[34%] xl:scale-[240%]">
+            <MovieList
+              moviesPerPage={8}
+              location={location ? location.toUpperCase() : 'KBRG'}
+              timing={timing ? timing : 10}
+              minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
+              minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
+              lightMode={lightMode ? true : false}
+            />
+          </div>
+        </div>
 
-        <TrailerCard
-          link="https://www.kinepolis.be"
-          text="Film niet gevonden?"
-          subText="Scan hier voor andere films"
-          secondary
-        />
-      </Trailer>
+        <Trailer
+          video={
+            'https://www.youtube.com/embed/qSqVVswa420?autoplay=1&mute=1&loop=1&playlist=qSqVVswa420&controls=0'
+          }
+        >
+          <TrailerCard
+            link="https://www.kinepolis.be"
+            text="Koop hier je tickets voor"
+            subText="Top Gun: Maverick"
+          />
+
+          <TrailerCard
+            link="https://www.kinepolis.be"
+            text="Film niet gevonden?"
+            subText="Scan hier voor andere films"
+            secondary
+          />
+        </Trailer>
+      </div>
     </div>
   )
 }
