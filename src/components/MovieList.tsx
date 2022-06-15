@@ -122,8 +122,13 @@ export default function MovieList({
         >
           {filteredMovies?.slice(indexes[0], indexes[1]).map((movie) => {
             return (
-              /*@ts-ignore*/
-              <MovieCard location={location} movie={movie} key={movie.id} />
+              <MovieCard
+                location={location}
+                movie={movie}
+                /*@ts-ignore*/
+                key={movie.id}
+                lightMode={lightMode}
+              />
             )
           })}
         </div>

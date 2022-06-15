@@ -9,4 +9,5 @@ export interface TrailerCardInterface {
   text?: string
   subText?: string
   secondary?: boolean
+  lightMode?: boolean
 }

@@ -54,6 +54,7 @@ export default function App() {
             link="https://www.kinepolis.be"
             text="Koop hier je tickets voor"
             subText="Top Gun: Maverick"
+            lightMode={lightMode ? true : false}
           />
 
           <TrailerCard
@@ -61,6 +62,7 @@ export default function App() {
             text="Film niet gevonden?"
             subText="Scan hier voor andere films"
             secondary
+            lightMode={lightMode ? true : false}
           />
         </Trailer>
       </div>
