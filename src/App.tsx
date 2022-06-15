@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom'
 export default function App() {
   const search = useLocation().search
   let location = new URLSearchParams(search).get('location')?.toString()
-  let lightMode = new URLSearchParams(search).get('lightmode')
+  let lightMode = Boolean(new URLSearchParams(search).get('lightmode'))
   /* @ts-ignore */
   let timing = parseInt(new URLSearchParams(search).get('timing'))
   let minutesBeforeNow = parseInt(
@@ -21,8 +21,10 @@ export default function App() {
     new URLSearchParams(search).get('minutesafternow'),
   )
 
+  console.log(lightMode)
+
   return (
-    <div className="dark">
+    <div className={`${lightMode != true ? 'dark' : ''}`}>
       <div
         className="flex flex-col justify-between h-screen  dark:bg-alpha bg-gray-x-light overflow-hidden "
         style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
