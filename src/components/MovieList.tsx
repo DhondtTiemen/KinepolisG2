@@ -116,7 +116,7 @@ export default function MovieList({
       const element = (
         <div
           key={index}
-          className=" gap-4 grid grid-cols-[repeat(2,383px)] justify-center w-screen h-full px-8"
+          className=" gap-6 grid grid-cols-[repeat(2,383px)] justify-center w-screen h-full px-8"
         >
           {filteredMovies?.slice(indexes[0], indexes[1]).map((movie) => {
             return (
