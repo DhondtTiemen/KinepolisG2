@@ -26,20 +26,19 @@ export default function App() {
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
     >
       <div className="h-2/3">
-        <div className="grid grid-cols-3 items-center  mx-6 pt-4">
+        <div className="grid grid-cols-3 items-center  mx-32 pt-14">
           <Logo />
           <Clock />
           <ToolTip text={'Scan de QR-code, en koop tickets'} />
         </div>
-        <div className='flex justify-center mt-[2%] content-start  xl:mt-[35%] xl:scale-[240%]'>
-
-        <MovieList
-          moviesPerPage={8}
-          location={location ? location.toUpperCase() : 'KBRG'}
-          timing={timing ? timing : 10}
-          minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
-          minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
-        />
+        <div className="flex justify-center mt-[2%] content-start  xl:mt-[34%] xl:scale-[240%]">
+          <MovieList
+            moviesPerPage={8}
+            location={location ? location.toUpperCase() : 'KBRG'}
+            timing={timing ? timing : 10}
+            minutesBeforeNow={minutesBeforeNow ? minutesBeforeNow : 30}
+            minutesAfterNow={minutesAfterNow ? minutesAfterNow : 240}
+          />
         </div>
       </div>
 
@@ -48,19 +47,18 @@ export default function App() {
           'https://www.youtube.com/embed/qSqVVswa420?controls=0&autoplay=1'
         }
       >
-          <TrailerCard
-            link="https://www.kinepolis.be"
-            text="Koop hier je tickets voor"
-            subText="Top Gun: Maverick"
-          />
+        <TrailerCard
+          link="https://www.kinepolis.be"
+          text="Koop hier je tickets voor"
+          subText="Top Gun: Maverick"
+        />
 
-          <TrailerCard
-            link="https://www.kinepolis.be"
-            text="Film niet gevonden?"
-            subText="Scan hier voor andere films"
-            secondary
-          />
-
+        <TrailerCard
+          link="https://www.kinepolis.be"
+          text="Film niet gevonden?"
+          subText="Scan hier voor andere films"
+          secondary
+        />
       </Trailer>
     </div>
   )

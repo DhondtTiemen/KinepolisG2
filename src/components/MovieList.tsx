@@ -20,7 +20,7 @@ export default function MovieList({
   const [movies, setMovies] = useState<Movie[]>()
   const [filteredMovies, setFilteredMovies] = useState<Movie[]>()
   const [lists, setLists] = useState<JSX.Element[]>()
-  const [opacity, setOpacity] = useState<string>("opacity-0")
+  const [opacity, setOpacity] = useState<string>('opacity-0')
   const [pages, setPages] = useState<number>(-1)
   const [currentPage, setCurrentPage] = useState<number>(0)
   const [slide, setSlide] = useState<React.CSSProperties>()
@@ -129,9 +129,9 @@ export default function MovieList({
       tempLists.push(element)
     }
     setLists(tempLists)
-    
+
     await delay(100)
-    setOpacity("opacity-1")
+    setOpacity('opacity-1')
   }
 
   const getMovies = async () => sortedMovies(await fetchMovies(location))
@@ -162,7 +162,6 @@ export default function MovieList({
 
   useEffect(() => {
     createLists()
-    
   }, [pages])
 
   useEffect(() => {
@@ -195,9 +194,11 @@ export default function MovieList({
       <div className={`flex flex-row w-fit `} style={slide}>
         {lists}
       </div>
-      <div className={`flex gap-4 justify-center my-3 ${opacity} mb-[20px] xl:my-10`}>
-     <PageIndicator page={pages} timing={timing} />
-    </div>
+      <div
+        className={`flex gap-4 justify-center my-3 ${opacity} mb-[20px] xl:my-12`}
+      >
+        <PageIndicator page={pages} timing={timing} />
+      </div>
     </div>
   )
 }
