@@ -26,12 +26,12 @@ export default function App() {
       style={{ backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }}
     >
       <div className="h-2/3">
-        <div className="grid grid-cols-3 items-center  mx-6 pt-4">
+        <div className="grid grid-cols-3 items-center  mx-32 pt-14">
           <Logo />
           <Clock />
           <ToolTip text={'Scan de QR-code, en koop tickets'} />
         </div>
-        <div className="flex justify-center mt-[2%] content-start  xl:mt-[35%] xl:scale-[240%]">
+        <div className="flex justify-center mt-[2%] content-start  xl:mt-[34%] xl:scale-[240%]">
           <MovieList
             moviesPerPage={8}
             location={location ? location.toUpperCase() : 'KBRG'}
