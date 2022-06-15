@@ -195,7 +195,7 @@ export default function MovieList({
         {lists}
       </div>
       <div
-        className={`flex gap-4 justify-center my-3 ${opacity} mb-[20px] xl:my-12`}
+        className={`flex gap-4 justify-center my-3 ${opacity} mb-[20px] xl:my-10`}
       >
         <PageIndicator page={pages} timing={timing} />
       </div>
