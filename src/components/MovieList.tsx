@@ -130,7 +130,7 @@ export default function MovieList({
     }
     setLists(tempLists)
     
-    await delay(70)
+    await delay(100)
     setOpacity("opacity-1")
   }
 
