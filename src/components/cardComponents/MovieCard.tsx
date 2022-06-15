@@ -74,7 +74,7 @@ export default function MovieCard({
           {/*@ts-ignore*/}
           <MovieCover images={movie.movie.images} />
         </div>
-        <div className="w-2/4 mt-4">
+        <div className="w-2/4 mt-3">
           <MovieTimeInfo
             //@ts-ignore
             movieTime={movie.showtime}
